@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     :root{
       --bg:#0f172a;       /* slate-900 */
@@ -18,52 +19,127 @@
       --brand:#38bdf8;    /* sky-400 */
       --accent:#22d3ee;   /* cyan-400 */
     }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}
+    
+    /* 淺色模式 */
+    [data-theme="light"] {
+      --bg:#f8fafc;       /* slate-50 */
+      --card:#ffffff;     /* white */
+      --soft:#f1f5f9;     /* slate-100 */
+      --ink:#0f172a;      /* slate-900 */
+      --muted:#64748b;    /* slate-500 */
+      --brand:#0284c7;    /* sky-600 */
+      --accent:#0891b2;   /* cyan-600 */
+    }
+    
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:background-color 0.3s ease, color 0.3s ease;}
     .wrap{max-width:980px;margin:40px auto;padding:0 20px;}
+    
+    /* 控制按鈕區 */
+    .controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+      z-index: 1000;
+    }
+    
+    .btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(56,189,248,0.3);
+      background: var(--card);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .btn:hover {
+      background: var(--soft);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
     .header{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-bottom:28px}
     .name{font-size:48px;line-height:1.1;font-weight:900;letter-spacing:0.5px}
     .subtitle{color:var(--muted);font-size:16px;margin-top:4px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),#0b1220);border:1px solid #223049;color:#cbd5e1;font-size:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(11,18,32,0.3));border:1px solid rgba(56,189,248,0.2);color:var(--ink);font-size:14px}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:900px){.grid{grid-template-columns:300px 1fr;gap:28px}}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0));border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.45);border-radius:18px;padding:20px}
+    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
-    .lead{font-size:18px;line-height:1.75;color:#e2e8f0}
+    .lead{font-size:18px;line-height:1.75;color:var(--ink)}
     .list{display:flex;flex-direction:column;gap:16px}
     .item h4{margin:0 0 2px;font-weight:800}
     .item .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
-    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:#cfeffc;background:rgba(2,132,199,.08)}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
-    .role{background:rgba(255,255,255,.02);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px}
+    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;}
     .role h3{margin:0 0 6px;font-size:18px}
-    .role .company{color:#e5e7eb;font-weight:700}
+    .role .company{color:var(--ink);font-weight:700}
     .role .range{color:var(--muted);font-size:14px}
     .role ul{margin:10px 0 0 18px}
     .role li{margin:6px 0;line-height:1.65}
-    .project{background:rgba(255,255,255,.02);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px}
-    .project h3{margin:0 0 8px;font-size:17px;color:#a5f3fc}
+    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;}
+    .project h3{margin:0 0 8px;font-size:17px;color:var(--brand)}
     .project .desc{color:var(--muted);font-size:14px;margin-bottom:10px;line-height:1.6}
-    .project .highlight{color:#22d3ee;font-weight:600;font-size:14px;margin:10px 0 4px}
+    .project .highlight{color:var(--accent);font-weight:600;font-size:14px;margin:10px 0 4px}
     .project ul{margin:6px 0 0 18px}
     .project li{margin:4px 0;line-height:1.6;font-size:14px}
     .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,"Liberation Mono","DejaVu Sans Mono","Courier New",monospace;}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
-    /* Print */
+    
+    /* 列印樣式 */
     @media print{
       body{background:#fff;color:#000}
       .card{border:0;box-shadow:none;background:#fff}
       .chip{border:1px solid #999}
       a{color:#000;text-decoration:underline}
+      .controls{display:none !important;}
+    }
+    
+    /* 響應式調整 */
+    @media(max-width:768px){
+      .controls{
+        position: static;
+        margin: 0 20px 20px;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <!-- 控制按鈕 -->
+  <div class="controls">
+    <button class="btn" id="themeToggle" onclick="toggleTheme()">
+      <span id="themeIcon">🌙</span>
+      <span id="themeText">淺色模式</span>
+    </button>
+    <button class="btn" onclick="exportPDF()">
+      <span>📄</span>
+      <span>匯出 PDF</span>
+    </button>
+  </div>
+
+  <div class="wrap" id="resume-content">
     <!-- Header -->
     <div class="header">
-      <div>
+      <!-- 頭像區塊 - 請替換 src 為你的照片路徑 -->
+      <img src="https://via.placeholder.com/120" alt="陳昱勳" class="avatar">
+      
+      <div class="header-text">
         <div class="name">陳昱勳</div>
         <div class="subtitle">7+ 年全端開發 / 技術管理｜大型系統架構、AI 導入、跨平台整合</div>
       </div>
@@ -145,7 +221,7 @@
         </div>
         <div class="section" id="contact">
           <div class="section-title">聯絡</div>
-          <p>📧 <span class="mono">c32i2576@gmail.com</span></p>
+          <p>📧 <span class="mono"><a href="mailto:c32i2576@gmail.com">c32i2576@gmail.com</a></span></p>
           <p>🔗 <a href="https://www.cake.me/c32i2576" target="_blank" rel="noopener">Cake.me 個人頁</a></p>
         </div>
       </aside>
@@ -332,10 +408,82 @@
 
     <footer>
       <div>最後更新:<span id="updated"></span> · 版型 by 陳昱勳</div>
-      <script>
-        document.getElementById('updated').textContent = new Date().toISOString().slice(0,10);
-      </script>
     </footer>
   </div>
+
+  <script>
+    // 設定最後更新時間
+    document.getElementById('updated').textContent = new Date().toLocaleDateString('zh-TW');
+    
+    // 主題切換功能
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // 更新按鈕文字和圖標
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+      
+      if (newTheme === 'light') {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '深色模式';
+      } else {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '淺色模式';
+      }
+    }
+    
+    // 頁面載入時恢復之前的主題設定
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      const html = document.documentElement;
+      html.setAttribute('data-theme', savedTheme);
+      
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+      
+      if (savedTheme === 'light') {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '深色模式';
+      } else {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '淺色模式';
+      }
+    });
+    
+    // PDF 匯出功能
+    function exportPDF() {
+      const element = document.getElementById('resume-content');
+      const controls = document.querySelector('.controls');
+      
+      // 暫時隱藏控制按鈕
+      controls.style.display = 'none';
+      
+      const opt = {
+        margin: [10, 10, 10, 10],
+        filename: '陳昱勳_履歷.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          letterRendering: true
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait' 
+        }
+      };
+      
+      html2pdf().set(opt).from(element).save().then(() => {
+        // 恢復顯示控制按鈕
+        controls.style.display = 'flex';
+      });
+    }
+  </script>
 </body>
 </html>

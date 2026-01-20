@@ -83,6 +83,60 @@
     .item{page-break-inside:avoid}
     .item h4{margin:0 0 2px;font-weight:800}
     .item .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+    
+    /* 技能區塊樣式 */
+    .skill-category{margin-bottom:20px}
+    .skill-level{
+      margin:0 0 10px;
+      font-weight:700;
+      font-size:15px;
+      padding-left:12px;
+      border-left:3px solid;
+    }
+    .skill-level.core{
+      border-color:var(--brand);
+      color:var(--brand);
+    }
+    .skill-level.main{
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+    .skill-level.plus{
+      border-color:var(--muted);
+      color:var(--muted);
+    }
+    .skill-list-text{
+      margin:0 0 0 20px;
+      padding:0;
+      list-style:disc;
+    }
+    .skill-list-text li{
+      margin:6px 0;
+      line-height:1.6;
+      color:var(--ink);
+    }
+    .skill-tech-group{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-left:8px;
+    }
+    .tech-item{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+    }
+    .tech-label{
+      font-weight:600;
+      color:var(--brand);
+      min-width:80px;
+      font-size:13px;
+    }
+    .tech-value{
+      color:var(--ink);
+      line-height:1.6;
+      font-size:14px;
+    }
     .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
     .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid}
@@ -164,71 +218,70 @@
     </div>
 
     <div class="grid">
-      <!-- Sidebar -->
-      <aside class="card">
+      <!-- Sidebar -->   
+       <aside class="card">
         <div class="section">
           <div class="section-title">簡介</div>
           <p class="lead">擅長大型系統架構設計、AI 導入與跨平台整合。具 15 人以上團隊帶領經驗,推動數位轉型與產品商業化,重視溝通、跨部門協作與持續學習。</p>
         </div>
         <div class="section">
           <div class="section-title">技能</div>
-          <div class="item">
-            <h4>前端</h4>
-            <div>
-              <span class="pill">HTML5</span>
-              <span class="pill">CSS</span>
-              <span class="pill">JavaScript</span>
-              <span class="pill">Vue</span>
-              <span class="pill">React</span>
+          
+          <div class="skill-category">
+            <h4 class="skill-level core">核心專長</h4>
+            <ul class="skill-list-text">
+              <li>系統架構設計</li>
+              <li>ERP / POS 整合</li>
+              <li>雲端高併發架構</li>
+              <li>AI 導入與商業化</li>
+              <li>跨平台系統整合</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4 class="skill-level main">主要技術</h4>
+            <div class="skill-tech-group">
+              <div class="tech-item">
+                <span class="tech-label">Backend</span>
+                <span class="tech-value">Python / PHP / C#</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-label">Frontend</span>
+                <span class="tech-value">Vue / React / JavaScript</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-label">Database</span>
+                <span class="tech-value">MySQL / MSSQL / MariaDB / NoSQL</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-label">Cloud</span>
+                <span class="tech-value">AWS (EC2 / ALB / Auto Scaling / RDS) / GCP</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-label">其他</span>
+                <span class="tech-value">Redis / WebSocket / RESTful API</span>
+              </div>
             </div>
           </div>
-          <div class="item">
-            <h4>後端</h4>
-            <div>
-              <span class="pill">PHP</span>
-              <span class="pill">C#</span>
-              <span class="pill">Python</span>
-              <span class="pill">MySQL</span>
-              <span class="pill">MSSQL</span>
-              <span class="pill">MariaDB</span>
-              <span class="pill">NoSQL</span>
-            </div>
+          
+          <div class="skill-category">
+            <h4 class="skill-level plus">加分技能</h4>
+            <ul class="skill-list-text">
+              <li>IoT 控制 (Raspberry Pi)</li>
+              <li>影像辨識 (CNN / TensorFlow)</li>
+              <li>LLM 整合 (OpenAI / Gemini / RAG)</li>
+              <li>LINE Bot 開發</li>
+            </ul>
           </div>
-          <div class="item">
-            <h4>AI / ML</h4>
-            <div>
-              <span class="pill">Python</span>
-              <span class="pill">CNN</span>
-              <span class="pill">TensorFlow</span>
-              <span class="pill">RAG / LINE 串接</span>
-            </div>
-          </div>
-          <div class="item">
-            <h4>雲端與架構</h4>
-            <div>
-              <span class="pill">AWS EC2</span>
-              <span class="pill">AWS ALB</span>
-              <span class="pill">Auto Scaling</span>
-              <span class="pill">Redis</span>
-              <span class="pill">GCP Compute Engine</span>
-            </div>
-          </div>
-          <div class="item">
-            <h4>IoT 與影像處理</h4>
-            <div>
-              <span class="pill">Raspberry Pi</span>
-              <span class="pill">影像辨識</span>
-              <span class="pill">傳統影像處理</span>
-            </div>
-          </div>
-          <div class="item">
-            <h4>其他</h4>
-            <div>
-              <span class="pill">專案管理</span>
-              <span class="pill">團隊訓練</span>
-              <span class="pill">系統整合</span>
-              <span class="pill">數位轉型</span>
-            </div>
+        </div>
+        
+        <div class="item">
+          <h4>其他</h4>
+          <div>
+            <span class="pill">專案管理</span>
+            <span class="pill">團隊訓練</span>
+            <span class="pill">系統整合</span>
+            <span class="pill">數位轉型</span>
           </div>
         </div>
         <div class="section">

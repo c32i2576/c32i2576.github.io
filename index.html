@@ -30,8 +30,8 @@
       --accent:#0891b2;
     }
     
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:background-color 0.3s ease, color 0.3s ease;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:background-color 0.3s ease, color 0.3s ease;line-height:1.5;}
     .wrap{max-width:980px;margin:40px auto;padding:0 20px}
     
     .controls {
@@ -70,15 +70,18 @@
     }
     
     .header{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-bottom:28px}
-    .name{font-size:48px;line-height:1.1;font-weight:900;letter-spacing:0.5px}
-    .subtitle{color:var(--muted);font-size:16px;margin-top:4px}
+    .header-text{flex:1}
+    .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--brand);}
+    .name{font-size:48px;line-height:1.1;font-weight:900;letter-spacing:0.5px;margin:0 0 8px 0}
+    .subtitle{color:var(--muted);font-size:16px;margin:0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(11,18,32,0.3));border:1px solid rgba(56,189,248,0.2);color:var(--ink);font-size:14px}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:900px){.grid{grid-template-columns:300px 1fr;gap:28px}}
-    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid}
-    .section{page-break-inside:avoid}
+    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
+    .section{page-break-inside:avoid;margin-bottom:24px}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
-    .lead{font-size:18px;line-height:1.75;color:var(--ink)}
+    .lead{font-size:18px;line-height:1.75;color:var(--ink);margin-bottom:16px}
     .list{display:flex;flex-direction:column;gap:16px}
     .item{page-break-inside:avoid}
     .item h4{margin:0 0 2px;font-weight:800}
@@ -139,46 +142,85 @@
     }
     .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
-    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid}
+    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .role h3{margin:0 0 6px;font-size:18px}
     .role .company{color:var(--ink);font-weight:700}
     .role .range{color:var(--muted);font-size:14px}
-    .role ul{margin:10px 0 0 18px}
+    .role ul{margin:10px 0 0 18px;padding:0}
     .role li{margin:6px 0;line-height:1.65}
-    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid}
+    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .project h3{margin:0 0 8px;font-size:17px;color:var(--brand)}
     .project .desc{color:var(--muted);font-size:14px;margin-bottom:10px;line-height:1.6}
     .project .highlight{color:var(--accent);font-weight:600;font-size:14px;margin:10px 0 4px}
-    .project ul{margin:6px 0 0 18px}
+    .project ul{margin:6px 0 0 18px;padding:0}
     .project li{margin:4px 0;line-height:1.6;font-size:14px}
     .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,"Liberation Mono","DejaVu Sans Mono","Courier New",monospace;}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
     
-    @media print{
-      body{background:#fff;color:#000}
-      .card{border:1px solid #ddd;box-shadow:none;background:#fff}
-      .chip{border:1px solid #999;background:#f5f5f5}
-      .pill{border:1px solid #999;background:#f0f0f0}
-      a{color:#0066cc}
-      .controls{display:none!important}
-      .grid{grid-template-columns:1fr!important}
-      .wrap{max-width:100%!important;padding:0!important}
+    /* PDF 專用樣式 */
+    .pdf-mode {
+      background: white !important;
+      color: #000 !important;
     }
-    
-    /* PDF 專用樣式 - 垂直排列 */
     .pdf-mode .grid{
       grid-template-columns:1fr!important;
     }
     .pdf-mode .wrap{
       max-width:100%!important;
-      padding:0!important;
+      padding:10mm!important;
       margin:0!important;
     }
     .pdf-mode .card{
+      border:1px solid #ddd!important;
+      box-shadow:none!important;
+      background:#fff!important;
       border-radius:8px!important;
       margin-bottom:10px!important;
+      page-break-inside:avoid;
+    }
+    .pdf-mode .chip{
+      border:1px solid #999!important;
+      background:#f5f5f5!important;
+      color:#000!important;
+    }
+    .pdf-mode .pill{
+      border:1px solid #0284c7!important;
+      background:#e0f2fe!important;
+      color:#0284c7!important;
+    }
+    .pdf-mode .section-title{
+      color:#0284c7!important;
+    }
+    .pdf-mode .project,
+    .pdf-mode .role{
+      background:#f8fafc!important;
+      border:1px solid #e2e8f0!important;
+    }
+    .pdf-mode .project h3{
+      color:#0284c7!important;
+    }
+    .pdf-mode .highlight{
+      color:#0891b2!important;
+    }
+    .pdf-mode .tech-label,
+    .pdf-mode .skill-level{
+      color:#0284c7!important;
+    }
+    .pdf-mode a{
+      color:#0066cc!important;
+    }
+    
+    @media print{
+      body{background:#fff;color:#000}
+      .controls{display:none!important}
+      .card{border:1px solid #ddd;box-shadow:none;background:#fff}
+      .chip{border:1px solid #999;background:#f5f5f5}
+      .pill{border:1px solid #999;background:#f0f0f0}
+      a{color:#0066cc}
+      .grid{grid-template-columns:1fr!important}
+      .wrap{max-width:100%!important;padding:0!important}
     }
     
     @media(max-width:768px){
@@ -187,6 +229,9 @@
         margin: 0 20px 20px;
         justify-content: center;
       }
+      .avatar{width:100px;height:100px}
+      .name{font-size:36px}
+      .header{flex-direction:column;align-items:center;text-align:center}
     }
   </style>
 </head>
@@ -213,22 +258,26 @@
       <div class="header-text">
         <div class="name">陳昱勳</div>
         <div class="subtitle">7+ 年全端開發 / 技術管理｜大型系統架構、AI 導入、跨平台整合</div>
+        
+        <div class="chips">
+          <div class="chip">📍 嘉義縣,台灣</div>
+          <a href="mailto:c3212576@gmail.com" class="chip">📧 聯絡方式</a>
+        </div>
       </div>
-      <span class="chip">📍 嘉義縣,台灣｜🔗 <a href="#contact">聯絡方式</a></span>
     </div>
 
     <div class="grid">
-      <!-- Sidebar -->   
-       <aside class="card">
-        <div class="section">
+      <aside>
+        <div class="card section">
           <div class="section-title">簡介</div>
           <p class="lead">擅長大型系統架構設計、AI 導入與跨平台整合。具 15 人以上團隊帶領經驗,推動數位轉型與產品商業化,重視溝通、跨部門協作與持續學習。</p>
         </div>
-        <div class="section">
+
+        <div class="card section">
           <div class="section-title">技能</div>
           
           <div class="skill-category">
-            <h4 class="skill-level core">核心專長</h4>
+            <div class="skill-level core">核心專長</div>
             <ul class="skill-list-text">
               <li>系統架構設計</li>
               <li>ERP / POS 整合</li>
@@ -237,9 +286,9 @@
               <li>跨平台系統整合</li>
             </ul>
           </div>
-          
+
           <div class="skill-category">
-            <h4 class="skill-level main">主要技術</h4>
+            <div class="skill-level main">主要技術</div>
             <div class="skill-tech-group">
               <div class="tech-item">
                 <span class="tech-label">Backend</span>
@@ -263,9 +312,9 @@
               </div>
             </div>
           </div>
-          
+
           <div class="skill-category">
-            <h4 class="skill-level plus">加分技能</h4>
+            <div class="skill-level plus">加分技能</div>
             <ul class="skill-list-text">
               <li>IoT 控制 (Raspberry Pi)</li>
               <li>影像辨識 (CNN / TensorFlow)</li>
@@ -274,9 +323,9 @@
             </ul>
           </div>
         </div>
-        
-        <div class="item">
-          <h4>其他</h4>
+
+        <div class="card section">
+          <div class="section-title">其他</div>
           <div>
             <span class="pill">專案管理</span>
             <span class="pill">團隊訓練</span>
@@ -284,34 +333,51 @@
             <span class="pill">數位轉型</span>
           </div>
         </div>
-        <div class="section">
+
+        <div class="card section">
           <div class="section-title">語言</div>
-          <p>中文:母語或雙語</p>
-          <p>英文:初階</p>
+          <div class="list">
+            <div class="item">
+              <h4>中文:母語或雙語</h4>
+            </div>
+            <div class="item">
+              <h4>英文:初階</h4>
+            </div>
+          </div>
         </div>
-        <div class="section" id="contact">
+
+        <div class="card section">
           <div class="section-title">聯絡</div>
-          <p>📧 <span class="mono"><a href="mailto:c32i2576@gmail.com">c32i2576@gmail.com</a></span></p>
-          <p>🔗 <a href="https://www.cake.me/c32i2576" target="_blank" rel="noopener">Cake.me 個人頁</a></p>
+          <div class="list">
+            <div class="item">
+              <a href="mailto:c3212576@gmail.com" class="mono">c3212576@gmail.com</a>
+            </div>
+            <div class="item">
+              <a href="https://cake.me/個人頁" target="_blank">Cake.me 個人頁</a>
+            </div>
+          </div>
         </div>
       </aside>
 
-      <!-- Main -->
-      <main class="card">
+      <main>
         <div class="section">
           <div class="section-title">工作經歷</div>
           <div class="timeline">
             <div class="role">
-              <h3><span class="company">日化能源科技股份有限公司</span>｜技術顧問</h3>
+              <h3>
+                <span class="company">日化能源科技股份有限公司</span> | 技術顧問
+              </h3>
               <div class="range">2024/11 – 2025/12</div>
               <ul>
                 <li>組織團隊、提供技術建議並建置發電裝置監控系統。</li>
-                <li>以工業電腦監控發電資訊並透過並聯器與市電併聯,支援綠電憑證。</li>
+                <li>以工業電腦監控發電資訊並透過並聯器與市電併聯,支援線電憑證。</li>
               </ul>
             </div>
 
             <div class="role">
-              <h3><span class="company">創力美股份有限公司</span>｜技術長</h3>
+              <h3>
+                <span class="company">創力美股份有限公司</span> | 技術長
+              </h3>
               <div class="range">2024/07 – 2025/11</div>
               <ul>
                 <li>研究導入 AI、訓練與商業化,組建 AI 團隊。</li>
@@ -320,7 +386,9 @@
             </div>
 
             <div class="role">
-              <h3><span class="company">創力美股份有限公司</span>｜總經理</h3>
+              <h3>
+                <span class="company">創力美股份有限公司</span> | 總經理
+              </h3>
               <div class="range">2022/06 – 2024/08</div>
               <ul>
                 <li>全面負責公司營運與策略規劃,帶領跨職能團隊達成年度目標。</li>
@@ -330,17 +398,21 @@
             </div>
 
             <div class="role">
-              <h3><span class="company">創力美股份有限公司</span>｜技術主管</h3>
+              <h3>
+                <span class="company">創力美股份有限公司</span> | 技術主管
+              </h3>
               <div class="range">2020/01 – 2022/06</div>
               <ul>
                 <li>帶領 15 人跨職能團隊,訓練 20+ 新人。</li>
                 <li>女士內衣品牌 ERP+POS:整合試衣管理與 3D 人體掃描,提供 11 種優惠計算與建議路徑,提高回購率。</li>
-                <li>物流整合:建立約聘送貨員流程、串接中國信託銀行直通金流,提升運能。</li>
+                <li>物流整合:建立約時段貨員流程、串接中國信託行直通金流,提升運能。</li>
               </ul>
             </div>
 
             <div class="role">
-              <h3><span class="company">創力美股份有限公司</span>｜軟體工程師</h3>
+              <h3>
+                <span class="company">創力美股份有限公司</span> | 軟體工程師
+              </h3>
               <div class="range">2019/07 – 2020/02</div>
               <ul>
                 <li>物流系統整合:串接中港台電商平台；月處理量由 3,000 件提升至 40,000 件,效率提升 3 倍以上。</li>
@@ -349,16 +421,20 @@
             </div>
 
             <div class="role">
-              <h3><span class="company">南華大學</span>｜計畫助理工程師</h3>
+              <h3>
+                <span class="company">南華大學</span> | 計畫助理工程師
+              </h3>
               <div class="range">2017/06 – 2018/06</div>
               <ul>
                 <li>教育部學生健康計畫:全國學校健康資料蒐集、維護與異常追蹤平台。</li>
-                <li>新竹縣健康促進問卷:建置上傳與統計流程。</li>
+                <li>新竹縣健康促進問卷:建置上傳與計流程。</li>
               </ul>
             </div>
 
             <div class="role">
-              <h3><span class="company">向陽能源科技</span>｜工程師</h3>
+              <h3>
+                <span class="company">向陽能源科技</span> | 工程師
+              </h3>
               <div class="range">2016/11 – 2017/06</div>
               <ul>
                 <li>內部網路建置與太陽能即時監控系統,提供異常通知與維運監測。</li>
@@ -405,11 +481,11 @@
 
             <div class="project">
               <h3>政府計畫「集食雲」</h3>
-              <div class="desc">政府計畫「集食雲」:主導需求、提案與網頁系統建置,B2B、B2大C的採購平台,完成公司首個中央計畫。</div>
+              <div class="desc">政府計畫「集食雲」:主導需求、提案與網頁系統建置,B2B、B2C的採購平台,完成公司首個中央計畫。</div>
               <div class="highlight">關鍵成效:</div>
               <ul>
                 <li><strong>批發販賣:</strong> 提供起批價、不同廠商等多種定價設定給供應商管理</li>
-                <li><strong>行銷企劃</strong> 配合廣告行銷多元促銷活動,提升平台活躍度與銷售額</li>
+                <li><strong>行銷企劃:</strong> 配合廣告行銷多元促銷活動,提升平台活躍度與銷售額</li>
                 <li><strong>物流整合:</strong> 串接第三方物流系統,實現訂單自動化處理與配送追蹤</li>
               </ul>
             </div>
@@ -463,14 +539,13 @@
                 <li><strong>IoT 控制:</strong> 基於 Raspberry Pi 與 PMS5003 模組開發空氣監測系統,實現自動換氣回饋控制</li>
               </ul>
             </div>
-          </div>
-          
+
             <div class="project">
-              <h3> LLM 整合</h3>
+              <h3>LLM 整合</h3>
               <div class="desc">透過LINE聊天室與 AI 大型語言模型,打造智慧化應用系統。</div>
               <div class="highlight">技術亮點:</div>
               <ul>
-                <li><strong>LLM 整合:</strong> 開發 AI Line Bot,設計語義分析路由,自動判斷應回傳 SQL 數據庫內容或由 LLM 生成回答，可以過濾非預期之問題</li>
+                <li><strong>LLM 整合:</strong> 開發 AI Line Bot,設計語義分析路由,自動判斷應回傳 SQL 數據庫內容或由 LLM 生成回答,可以過濾非預期之問題</li>
               </ul>
             </div>
           </div>
@@ -480,17 +555,18 @@
           <div class="section-title">學歷</div>
           <div class="list">
             <div class="item">
-              <h4>虎尾科技大學(2018 – 2019,電機系／肄業)</h4>
+              <h4>虎尾科技大學 (2018 – 2019,電機系／肄業)</h4>
               <div class="meta">傳統影像處理、嵌入式系統、CNN 影像辨識</div>
             </div>
             <div class="item">
-              <h4>南華大學(2011 – 2015,資訊工程)</h4>
+              <h4>南華大學 (2011 – 2015,資訊工程)</h4>
             </div>
           </div>
         </div>
 
       </main>
-      </div>
+    </div>
+  </div>
 
   <script>
     function toggleTheme() {
@@ -526,22 +602,26 @@
       body.classList.add('pdf-mode');
       
       const opt = {
-        margin: 5,
+        margin: [10, 10, 10, 10],
         filename: '陳昱勳_履歷.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
           scale: 2,
           useCORS: true,
           letterRendering: true,
-          logging: false
+          logging: false,
+          backgroundColor: '#ffffff'
         },
         jsPDF: { 
           unit: 'mm', 
           format: 'a4', 
-          orientation: 'portrait'
+          orientation: 'portrait',
+          compress: true
         },
         pagebreak: { 
-          mode: ['avoid-all', 'css', 'legacy']
+          mode: ['avoid-all', 'css', 'legacy'],
+          before: '.section',
+          avoid: ['.card', '.role', '.project', '.item']
         }
       };
       
@@ -560,12 +640,6 @@
     
     // 頁面載入完成後初始化
     window.addEventListener('DOMContentLoaded', () => {
-      // 設定更新時間
-      const updatedElement = document.getElementById('updated');
-      if (updatedElement) {
-        updatedElement.textContent = new Date().toLocaleDateString('zh-TW');
-      }
-      
       // 恢復主題設定
       const savedTheme = localStorage.getItem('theme') || 'dark';
       const html = document.documentElement;

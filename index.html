@@ -11,30 +11,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     :root{
-      --bg:#0f172a;       /* slate-900 */
-      --card:#111827;     /* gray-900 */
-      --soft:#1f2937;     /* gray-800 */
-      --ink:#e5e7eb;      /* gray-200 */
-      --muted:#9ca3af;    /* gray-400 */
-      --brand:#38bdf8;    /* sky-400 */
-      --accent:#22d3ee;   /* cyan-400 */
+      --bg:#0f172a;
+      --card:#111827;
+      --soft:#1f2937;
+      --ink:#e5e7eb;
+      --muted:#9ca3af;
+      --brand:#38bdf8;
+      --accent:#22d3ee;
     }
     
-    /* 淺色模式 */
     [data-theme="light"] {
-      --bg:#f8fafc;       /* slate-50 */
-      --card:#ffffff;     /* white */
-      --soft:#f1f5f9;     /* slate-100 */
-      --ink:#0f172a;      /* slate-900 */
-      --muted:#64748b;    /* slate-500 */
-      --brand:#0284c7;    /* sky-600 */
-      --accent:#0891b2;   /* cyan-600 */
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --soft:#f1f5f9;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --brand:#0284c7;
+      --accent:#0891b2;
     }
     
+    *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:background-color 0.3s ease, color 0.3s ease;}
-    .wrap{max-width:980px;margin:40px auto;padding:0 20px;}
+    .wrap{max-width:980px;margin:40px auto;padding:0 20px}
     
-    /* 控制按鈕區 */
     .controls {
       position: fixed;
       top: 20px;
@@ -76,21 +75,23 @@
     .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(11,18,32,0.3));border:1px solid rgba(56,189,248,0.2);color:var(--ink);font-size:14px}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:900px){.grid{grid-template-columns:300px 1fr;gap:28px}}
-    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;}
+    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid}
+    .section{page-break-inside:avoid}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
     .lead{font-size:18px;line-height:1.75;color:var(--ink)}
     .list{display:flex;flex-direction:column;gap:16px}
+    .item{page-break-inside:avoid}
     .item h4{margin:0 0 2px;font-weight:800}
     .item .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
     .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
-    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;}
+    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid}
     .role h3{margin:0 0 6px;font-size:18px}
     .role .company{color:var(--ink);font-weight:700}
     .role .range{color:var(--muted);font-size:14px}
     .role ul{margin:10px 0 0 18px}
     .role li{margin:6px 0;line-height:1.65}
-    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;}
+    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid}
     .project h3{margin:0 0 8px;font-size:17px;color:var(--brand)}
     .project .desc{color:var(--muted);font-size:14px;margin-bottom:10px;line-height:1.6}
     .project .highlight{color:var(--accent);font-weight:600;font-size:14px;margin:10px 0 4px}
@@ -101,16 +102,15 @@
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
     
-    /* 列印樣式 */
     @media print{
       body{background:#fff;color:#000}
-      .card{border:0;box-shadow:none;background:#fff}
-      .chip{border:1px solid #999}
-      a{color:#000;text-decoration:underline}
-      .controls{display:none !important;}
+      .card{border:1px solid #ddd;box-shadow:none;background:#fff}
+      .chip{border:1px solid #999;background:#f5f5f5}
+      .pill{border:1px solid #999;background:#f0f0f0}
+      a{color:#0066cc}
+      .controls{display:none!important}
     }
     
-    /* 響應式調整 */
     @media(max-width:768px){
       .controls{
         position: static;
@@ -121,7 +121,6 @@
   </style>
 </head>
 <body>
-  <!-- 控制按鈕 -->
   <div class="controls">
     <button class="btn" id="themeToggle" onclick="toggleTheme()">
       <span id="themeIcon">🌙</span>
@@ -134,11 +133,8 @@
   </div>
 
   <div class="wrap" id="resume-content">
-    <!-- Header -->
     <div class="header">
-      <!-- 頭像區塊 - 請替換 src 為你的照片路徑 -->
       <img src="https://via.placeholder.com/120" alt="陳昱勳" class="avatar">
-      
       <div class="header-text">
         <div class="name">陳昱勳</div>
         <div class="subtitle">7+ 年全端開發 / 技術管理｜大型系統架構、AI 導入、跨平台整合</div>
@@ -147,7 +143,6 @@
     </div>
 
     <div class="grid">
-      <!-- Sidebar -->
       <aside class="card">
         <div class="section">
           <div class="section-title">簡介</div>
@@ -226,7 +221,6 @@
         </div>
       </aside>
 
-      <!-- Main -->
       <main class="card">
         <div class="section">
           <div class="section-title">工作經歷</div>
@@ -412,10 +406,8 @@
   </div>
 
   <script>
-    // 設定最後更新時間
     document.getElementById('updated').textContent = new Date().toLocaleDateString('zh-TW');
     
-    // 主題切換功能
     function toggleTheme() {
       const html = document.documentElement;
       const currentTheme = html.getAttribute('data-theme');
@@ -424,7 +416,6 @@
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       
-      // 更新按鈕文字和圖標
       const themeIcon = document.getElementById('themeIcon');
       const themeText = document.getElementById('themeText');
       
@@ -437,7 +428,6 @@
       }
     }
     
-    // 頁面載入時恢復之前的主題設定
     window.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('theme') || 'dark';
       const html = document.documentElement;
@@ -455,33 +445,44 @@
       }
     });
     
-    // PDF 匯出功能
     function exportPDF() {
       const element = document.getElementById('resume-content');
       const controls = document.querySelector('.controls');
+      const html = document.documentElement;
       
-      // 暫時隱藏控制按鈕
       controls.style.display = 'none';
       
+      const currentTheme = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', 'light');
+      
       const opt = {
-        margin: [10, 10, 10, 10],
+        margin: 5,
         filename: '陳昱勳_履歷.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
           scale: 2,
           useCORS: true,
-          letterRendering: true
+          letterRendering: true,
+          logging: false
         },
         jsPDF: { 
           unit: 'mm', 
           format: 'a4', 
-          orientation: 'portrait' 
+          orientation: 'portrait'
+        },
+        pagebreak: { 
+          mode: ['avoid-all', 'css', 'legacy']
         }
       };
       
       html2pdf().set(opt).from(element).save().then(() => {
-        // 恢復顯示控制按鈕
         controls.style.display = 'flex';
+        html.setAttribute('data-theme', currentTheme);
+      }).catch(err => {
+        console.error('PDF 匯出失敗:', err);
+        controls.style.display = 'flex';
+        html.setAttribute('data-theme', currentTheme);
+        alert('PDF 匯出失敗,請再試一次');
       });
     }
   </script>

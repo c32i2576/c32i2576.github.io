@@ -109,6 +109,22 @@
       .pill{border:1px solid #999;background:#f0f0f0}
       a{color:#0066cc}
       .controls{display:none!important}
+      .grid{grid-template-columns:1fr!important}
+      .wrap{max-width:100%!important;padding:0!important}
+    }
+    
+    /* PDF 專用樣式 - 垂直排列 */
+    .pdf-mode .grid{
+      grid-template-columns:1fr!important;
+    }
+    .pdf-mode .wrap{
+      max-width:100%!important;
+      padding:0!important;
+      margin:0!important;
+    }
+    .pdf-mode .card{
+      border-radius:8px!important;
+      margin-bottom:10px!important;
     }
     
     @media(max-width:768px){
@@ -121,6 +137,7 @@
   </style>
 </head>
 <body>
+  <!-- 控制按鈕 -->
   <div class="controls">
     <button class="btn" id="themeToggle" onclick="toggleTheme()">
       <span id="themeIcon">🌙</span>
@@ -133,8 +150,12 @@
   </div>
 
   <div class="wrap" id="resume-content">
+
+    <!-- Header -->
     <div class="header">
+      <!-- 頭像區塊 - 請替換 src 為你的照片路徑 -->
       <img src="https://via.placeholder.com/120" alt="陳昱勳" class="avatar">
+      
       <div class="header-text">
         <div class="name">陳昱勳</div>
         <div class="subtitle">7+ 年全端開發 / 技術管理｜大型系統架構、AI 導入、跨平台整合</div>
@@ -143,6 +164,7 @@
     </div>
 
     <div class="grid">
+      <!-- Sidebar -->
       <aside class="card">
         <div class="section">
           <div class="section-title">簡介</div>
@@ -221,6 +243,7 @@
         </div>
       </aside>
 
+      <!-- Main -->
       <main class="card">
         <div class="section">
           <div class="section-title">工作經歷</div>
@@ -398,12 +421,7 @@
         </div>
 
       </main>
-    </div>
-
-    <footer>
-      <div>最後更新:<span id="updated"></span> · 版型 by 陳昱勳</div>
-    </footer>
-  </div>
+      </div>
 
   <script>
     document.getElementById('updated').textContent = new Date().toLocaleDateString('zh-TW');
@@ -449,11 +467,13 @@
       const element = document.getElementById('resume-content');
       const controls = document.querySelector('.controls');
       const html = document.documentElement;
+      const body = document.body;
       
       controls.style.display = 'none';
       
       const currentTheme = html.getAttribute('data-theme');
       html.setAttribute('data-theme', 'light');
+      body.classList.add('pdf-mode');
       
       const opt = {
         margin: 5,
@@ -478,10 +498,12 @@
       html2pdf().set(opt).from(element).save().then(() => {
         controls.style.display = 'flex';
         html.setAttribute('data-theme', currentTheme);
+        body.classList.remove('pdf-mode');
       }).catch(err => {
         console.error('PDF 匯出失敗:', err);
         controls.style.display = 'flex';
         html.setAttribute('data-theme', currentTheme);
+        body.classList.remove('pdf-mode');
         alert('PDF 匯出失敗,請再試一次');
       });
     }

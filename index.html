@@ -79,9 +79,9 @@
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:900px){.grid{grid-template-columns:300px 1fr;gap:28px}}
     .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
-    .section{page-break-inside:avoid;margin-bottom:24px}
+    .section{page-break-inside:avoid;margin-bottom:20px}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
-    .lead{font-size:18px;line-height:1.75;color:var(--ink);margin-bottom:16px}
+    .lead{font-size:16px;line-height:1.65;color:var(--ink);margin-bottom:16px}
     .list{display:flex;flex-direction:column;gap:16px}
     .item{page-break-inside:avoid}
     .item h4{margin:0 0 2px;font-weight:800}
@@ -159,26 +159,165 @@
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
     
-    /* PDF 專用樣式 */
+    /* PDF 專用樣式 - 垂直排列，放大字體 */
     .pdf-mode {
       background: white !important;
       color: #000 !important;
     }
     .pdf-mode .grid{
-      grid-template-columns:1fr!important;
+      display: grid!important;
+      grid-template-columns: 280px 1fr!important;
+      gap: 20px!important;
     }
     .pdf-mode .wrap{
       max-width:100%!important;
-      padding:10mm!important;
+      width:100%!important;
+      padding:8mm!important;
       margin:0!important;
+    }
+    .pdf-mode aside,
+    .pdf-mode main{
+      display: block!important;
+      width: auto!important;
+      max-width: none!important;
     }
     .pdf-mode .card{
       border:1px solid #ddd!important;
       box-shadow:none!important;
       background:#fff!important;
       border-radius:8px!important;
-      margin-bottom:10px!important;
+      margin-bottom:15px!important;
+      padding:18px!important;
       page-break-inside:avoid;
+      width: 100%!important;
+    }
+    .pdf-mode .header{
+      margin-bottom:20px!important;
+      page-break-after:avoid;
+      text-align:center!important;
+      flex-direction:column!important;
+      align-items:center!important;
+      width: 100%!important;
+    }
+    .pdf-mode .header-text{
+      text-align:center!important;
+      width: 100%!important;
+    }
+    .pdf-mode .name{
+      font-size:42px!important;
+      margin-bottom:8px!important;
+    }
+    .pdf-mode .subtitle{
+      font-size:16px!important;
+      line-height:1.6!important;
+    }
+    .pdf-mode .avatar{
+      width:110px!important;
+      height:110px!important;
+      margin-bottom:15px!important;
+    }
+    .pdf-mode .chips{
+      justify-content:center!important;
+    }
+    .pdf-mode .chip{
+      font-size:14px!important;
+      padding:8px 14px!important;
+    }
+    .pdf-mode .section-title{
+      font-size:20px!important;
+      margin:10px 0 15px!important;
+      border-bottom:2px solid #0284c7!important;
+      padding-bottom:6px!important;
+    }
+    .pdf-mode .lead{
+      font-size:16px!important;
+      line-height:1.7!important;
+      margin-bottom:0!important;
+    }
+    .pdf-mode .skill-level{
+      font-size:16px!important;
+      margin-bottom:12px!important;
+    }
+    .pdf-mode .skill-list-text{
+      font-size:15px!important;
+      margin:8px 0 0 20px!important;
+    }
+    .pdf-mode .skill-list-text li{
+      margin:8px 0!important;
+      line-height:1.6!important;
+    }
+    .pdf-mode .tech-item{
+      margin:8px 0!important;
+    }
+    .pdf-mode .tech-label{
+      font-size:14px!important;
+      min-width:90px!important;
+    }
+    .pdf-mode .tech-value{
+      font-size:14px!important;
+      line-height:1.6!important;
+    }
+    .pdf-mode .pill{
+      font-size:13px!important;
+      padding:6px 12px!important;
+      margin:4px 6px 4px 0!important;
+    }
+    .pdf-mode .role,
+    .pdf-mode .project{
+      padding:15px!important;
+      margin-bottom:12px!important;
+      page-break-inside:avoid;
+      width: 100%!important;
+    }
+    .pdf-mode .role h3,
+    .pdf-mode .project h3{
+      font-size:18px!important;
+      margin-bottom:6px!important;
+    }
+    .pdf-mode .role .company{
+      font-size:18px!important;
+    }
+    .pdf-mode .role .range,
+    .pdf-mode .project .desc{
+      font-size:14px!important;
+      margin-bottom:8px!important;
+      line-height:1.6!important;
+    }
+    .pdf-mode .project .highlight{
+      font-size:15px!important;
+      margin:10px 0 6px!important;
+    }
+    .pdf-mode .role ul,
+    .pdf-mode .project ul{
+      font-size:14px!important;
+      margin:8px 0 0 20px!important;
+    }
+    .pdf-mode .role li,
+    .pdf-mode .project li{
+      margin:6px 0!important;
+      line-height:1.6!important;
+    }
+    .pdf-mode .item h4{
+      font-size:16px!important;
+      margin-bottom:4px!important;
+    }
+    .pdf-mode .item .meta{
+      font-size:14px!important;
+    }
+    .pdf-mode aside .section{
+      margin-bottom:15px!important;
+    }
+    .pdf-mode .list .item{
+      margin-bottom:10px!important;
+    }
+    .pdf-mode a{
+      font-size:14px!important;
+    }
+    .pdf-mode .timeline{
+      width: 100%!important;
+    }
+    .pdf-mode .list{
+      width: 100%!important;
     }
     .pdf-mode .chip{
       border:1px solid #999!important;
@@ -602,26 +741,28 @@
       body.classList.add('pdf-mode');
       
       const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [5, 5, 5, 5],
         filename: '陳昱勳_履歷.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { 
-          scale: 2,
+          scale: 2.5,
           useCORS: true,
           letterRendering: true,
           logging: false,
-          backgroundColor: '#ffffff'
+          backgroundColor: '#ffffff',
+          width: element.scrollWidth,
+          height: element.scrollHeight
         },
         jsPDF: { 
           unit: 'mm', 
           format: 'a4', 
-          orientation: 'portrait',
+          orientation: 'landscape',
           compress: true
         },
         pagebreak: { 
           mode: ['avoid-all', 'css', 'legacy'],
-          before: '.section',
-          avoid: ['.card', '.role', '.project', '.item']
+          before: '.page-break',
+          avoid: ['.card', '.role', '.project', '.item', '.header']
         }
       };
       

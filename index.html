@@ -640,46 +640,100 @@
         // 等待樣式套用
         await new Promise(resolve => setTimeout(resolve, 300));
 
-        // 獲取要匯出的內容
-        const content = document.getElementById('resume-content');
-
-        // 使用 html2canvas 將內容轉換為圖片
-        const canvas = await html2canvas(content, {
-          scale: 2, // 提高解析度
-          useCORS: true,
-          logging: false,
-          backgroundColor: '#ffffff'
-        });
-
-        // 恢復原始樣式
-        document.body.classList.remove('pdf-mode');
-
-        // 計算 PDF 尺寸
-        const imgWidth = 210; // A4 寬度 (mm)
-        const pageHeight = 297; // A4 高度 (mm)
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        let heightLeft = imgHeight;
-
         // 建立 jsPDF 實例
         const { jsPDF } = window.jspdf;
         const pdf = new jsPDF('p', 'mm', 'a4');
 
-        let position = 0;
+        const pageWidth = 210; // A4 寬度 (mm)
+        const pageHeight = 297; // A4 高度 (mm)
+        const margin = 10; // 邊距 (mm)
+        const contentWidth = pageWidth - (margin * 2);
 
-        // 將圖片轉換為 base64
-        const imgData = canvas.toDataURL('image/png');
+        let currentY = margin;
+        let isFirstPage = true;
 
-        // 添加第一頁
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+        // 獲取要匯出的內容
+        const content = document.getElementById('resume-content');
+        const sections = [];
 
-        // 如果內容超過一頁，添加更多頁面
-        while (heightLeft > 0) {
-          position = heightLeft - imgHeight;
-          pdf.addPage();
-          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-          heightLeft -= pageHeight;
+        // 收集所有需要獨立渲染的區塊（避免被裁切）
+        // 1. Header
+        const header = content.querySelector('.header');
+        if (header) sections.push(header);
+
+        // 2. 側邊欄的每個 card
+        const cards = content.querySelectorAll('aside .card');
+        cards.forEach(card => sections.push(card));
+
+        // 3. 主要內容區的區塊標題 + 內容
+        const main = content.querySelector('main');
+        if (main) {
+          const mainSections = main.querySelectorAll('.section');
+          mainSections.forEach(section => {
+            // 添加區塊標題
+            const title = section.querySelector('.section-title');
+            if (title) {
+              const titleWrapper = document.createElement('div');
+              titleWrapper.appendChild(title.cloneNode(true));
+              sections.push({ element: section, isTitle: true, title: title.textContent });
+            }
+
+            // 添加每個 role 或 project
+            const roles = section.querySelectorAll('.role');
+            roles.forEach(role => sections.push(role));
+
+            const projects = section.querySelectorAll('.project');
+            projects.forEach(project => sections.push(project));
+
+            // 學歷項目
+            if (section.textContent.includes('學歷')) {
+              const items = section.querySelectorAll('.item');
+              items.forEach(item => sections.push(item));
+            }
+          });
         }
+
+        // 逐個渲染每個區塊
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i];
+          const element = section.element || section;
+
+          // 如果是標題，只渲染標題部分
+          let targetElement = element;
+          if (section.isTitle) {
+            targetElement = element.querySelector('.section-title');
+          }
+
+          // 將區塊轉換為 canvas
+          const canvas = await html2canvas(targetElement, {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#ffffff'
+          });
+
+          const imgData = canvas.toDataURL('image/png');
+          const imgWidth = contentWidth;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+          // 檢查是否需要換頁（當前 Y + 圖片高度超過頁面高度）
+          if (currentY + imgHeight > pageHeight - margin && !isFirstPage) {
+            pdf.addPage();
+            currentY = margin;
+          }
+
+          // 添加圖片到 PDF
+          pdf.addImage(imgData, 'PNG', margin, currentY, imgWidth, imgHeight);
+          currentY += imgHeight + 3; // 加上小間距
+
+          // 第一個元素後設置 isFirstPage 為 false
+          if (isFirstPage) {
+            isFirstPage = false;
+          }
+        }
+
+        // 恢復原始樣式
+        document.body.classList.remove('pdf-mode');
 
         // 下載 PDF
         pdf.save('陳昱勳_履歷.pdf');

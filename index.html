@@ -67,6 +67,15 @@
     .btn:active {
       transform: translateY(0);
     }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn:disabled:hover {
+      transform: none;
+    }
     
     .header{display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;margin-bottom:28px}
     .header-text{flex:1}
@@ -588,6 +597,10 @@
     </div>
   </div>
 
+  <!-- 引入 PDF 匯出套件 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <script>
     function toggleTheme() {
       const html = document.documentElement;
@@ -609,35 +622,81 @@
       }
     }
 
-    function exportToPDF() {
-      // 儲存原始主題
-      const originalTheme = document.documentElement.getAttribute('data-theme');
+    async function exportToPDF() {
+      const exportBtn = document.getElementById('exportPDF');
+      const originalBtnText = exportBtn.innerHTML;
 
-      // 切換到 PDF 模式（白底版面，垂直排序）
-      document.body.classList.add('pdf-mode');
+      try {
+        // 顯示載入狀態
+        exportBtn.innerHTML = '<span>⏳</span><span>生成中...</span>';
+        exportBtn.disabled = true;
 
-      // 等待樣式套用後再列印
-      setTimeout(() => {
-        window.print();
+        // 儲存原始主題
+        const originalTheme = document.documentElement.getAttribute('data-theme');
 
-        // 列印對話框關閉後恢復原始樣式
-        // 使用 matchMedia 監聽列印狀態
-        const printMediaQuery = window.matchMedia('print');
-        const afterPrint = () => {
-          document.body.classList.remove('pdf-mode');
-          printMediaQuery.removeEventListener('change', afterPrint);
-        };
+        // 切換到 PDF 模式（白底版面，垂直排序）
+        document.body.classList.add('pdf-mode');
 
-        // 監聽列印結束事件
-        window.addEventListener('afterprint', () => {
-          document.body.classList.remove('pdf-mode');
-        }, { once: true });
+        // 等待樣式套用
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-        // 備用方案：如果 afterprint 不支援，使用延遲恢復
-        setTimeout(() => {
-          document.body.classList.remove('pdf-mode');
-        }, 1000);
-      }, 100);
+        // 獲取要匯出的內容
+        const content = document.getElementById('resume-content');
+
+        // 使用 html2canvas 將內容轉換為圖片
+        const canvas = await html2canvas(content, {
+          scale: 2, // 提高解析度
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff'
+        });
+
+        // 恢復原始樣式
+        document.body.classList.remove('pdf-mode');
+
+        // 計算 PDF 尺寸
+        const imgWidth = 210; // A4 寬度 (mm)
+        const pageHeight = 297; // A4 高度 (mm)
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        let heightLeft = imgHeight;
+
+        // 建立 jsPDF 實例
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+
+        let position = 0;
+
+        // 將圖片轉換為 base64
+        const imgData = canvas.toDataURL('image/png');
+
+        // 添加第一頁
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // 如果內容超過一頁，添加更多頁面
+        while (heightLeft > 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+        }
+
+        // 下載 PDF
+        pdf.save('陳昱勳_履歷.pdf');
+
+        // 恢復按鈕狀態
+        exportBtn.innerHTML = originalBtnText;
+        exportBtn.disabled = false;
+
+      } catch (error) {
+        console.error('PDF 生成失敗:', error);
+        alert('PDF 生成失敗，請稍後再試');
+
+        // 恢復原始樣式和按鈕狀態
+        document.body.classList.remove('pdf-mode');
+        exportBtn.innerHTML = originalBtnText;
+        exportBtn.disabled = false;
+      }
     }
 
     // 頁面載入完成後初始化

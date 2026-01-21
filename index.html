@@ -158,6 +158,80 @@
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
 
+    /* PDF 專用樣式 */
+    body.pdf-mode {
+      background: #fff !important;
+      color: #000 !important;
+    }
+
+    body.pdf-mode * {
+      background: #fff !important;
+      color: #000 !important;
+      border-color: #ddd !important;
+    }
+
+    body.pdf-mode .controls {
+      display: none !important;
+    }
+
+    body.pdf-mode .grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+    }
+
+    body.pdf-mode .card {
+      background: #fff !important;
+      border: 1px solid #ddd !important;
+      box-shadow: none !important;
+      page-break-inside: avoid;
+    }
+
+    body.pdf-mode .chip {
+      border: 1px solid #999 !important;
+      background: #f5f5f5 !important;
+      color: #000 !important;
+    }
+
+    body.pdf-mode .pill {
+      border: 1px solid #999 !important;
+      background: #f0f0f0 !important;
+      color: #000 !important;
+    }
+
+    body.pdf-mode .section-title {
+      color: #0284c7 !important;
+    }
+
+    body.pdf-mode .skill-level.core {
+      border-color: #0284c7 !important;
+      color: #0284c7 !important;
+    }
+
+    body.pdf-mode .skill-level.main {
+      border-color: #0891b2 !important;
+      color: #0891b2 !important;
+    }
+
+    body.pdf-mode .skill-level.plus {
+      border-color: #64748b !important;
+      color: #64748b !important;
+    }
+
+    body.pdf-mode .tech-label {
+      color: #0284c7 !important;
+    }
+
+    body.pdf-mode .project h3,
+    body.pdf-mode a {
+      color: #0066cc !important;
+    }
+
+    body.pdf-mode .role,
+    body.pdf-mode .project {
+      background: #f5f5f5 !important;
+      border: 1px solid #ddd !important;
+    }
+
     @media print{
       body{background:#fff;color:#000}
       .controls{display:none!important}
@@ -184,6 +258,10 @@
 <body>
   <!-- 控制按鈕 -->
   <div class="controls">
+    <button class="btn" id="exportPDF" onclick="exportToPDF()">
+      <span>📄</span>
+      <span>匯出PDF</span>
+    </button>
     <button class="btn" id="themeToggle" onclick="toggleTheme()">
       <span id="themeIcon">🌙</span>
       <span id="themeText">淺色模式</span>
@@ -515,13 +593,13 @@
       const html = document.documentElement;
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
+
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      
+
       const themeIcon = document.getElementById('themeIcon');
       const themeText = document.getElementById('themeText');
-      
+
       if (newTheme === 'light') {
         themeIcon.textContent = '🌙';
         themeText.textContent = '深色模式';
@@ -531,16 +609,47 @@
       }
     }
 
+    function exportToPDF() {
+      // 儲存原始主題
+      const originalTheme = document.documentElement.getAttribute('data-theme');
+
+      // 切換到 PDF 模式（白底版面，垂直排序）
+      document.body.classList.add('pdf-mode');
+
+      // 等待樣式套用後再列印
+      setTimeout(() => {
+        window.print();
+
+        // 列印對話框關閉後恢復原始樣式
+        // 使用 matchMedia 監聽列印狀態
+        const printMediaQuery = window.matchMedia('print');
+        const afterPrint = () => {
+          document.body.classList.remove('pdf-mode');
+          printMediaQuery.removeEventListener('change', afterPrint);
+        };
+
+        // 監聽列印結束事件
+        window.addEventListener('afterprint', () => {
+          document.body.classList.remove('pdf-mode');
+        }, { once: true });
+
+        // 備用方案：如果 afterprint 不支援，使用延遲恢復
+        setTimeout(() => {
+          document.body.classList.remove('pdf-mode');
+        }, 1000);
+      }, 100);
+    }
+
     // 頁面載入完成後初始化
     window.addEventListener('DOMContentLoaded', () => {
       // 恢復主題設定
       const savedTheme = localStorage.getItem('theme') || 'dark';
       const html = document.documentElement;
       html.setAttribute('data-theme', savedTheme);
-      
+
       const themeIcon = document.getElementById('themeIcon');
       const themeText = document.getElementById('themeText');
-      
+
       if (savedTheme === 'light') {
         themeIcon.textContent = '🌙';
         themeText.textContent = '深色模式';

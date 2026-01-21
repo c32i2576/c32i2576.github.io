@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     :root{
       --bg:#0f172a;
@@ -158,199 +157,7 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
     footer{margin:26px 0;color:var(--muted);font-size:13px}
-    
-    /* PDF 專用樣式 - 垂直排列，放大字體 */
-    .pdf-mode {
-      background: white !important;
-      color: #000 !important;
-    }
-    .pdf-mode .grid{
-      display: grid!important;
-      grid-template-columns: 280px 1fr!important;
-      gap: 20px!important;
-    }
-    .pdf-mode .wrap{
-      max-width:100%!important;
-      width:100%!important;
-      padding:8mm!important;
-      margin:0!important;
-    }
-    .pdf-mode aside,
-    .pdf-mode main{
-      display: block!important;
-      width: auto!important;
-      max-width: none!important;
-    }
-    .pdf-mode .card{
-      border:1px solid #ddd!important;
-      box-shadow:none!important;
-      background:#fff!important;
-      border-radius:8px!important;
-      margin-bottom:15px!important;
-      padding:18px!important;
-      page-break-inside:avoid;
-      width: 100%!important;
-    }
-    .pdf-mode .header{
-      margin-bottom:20px!important;
-      page-break-after:avoid;
-      text-align:center!important;
-      flex-direction:column!important;
-      align-items:center!important;
-      width: 100%!important;
-    }
-    .pdf-mode .header-text{
-      text-align:center!important;
-      width: 100%!important;
-    }
-    .pdf-mode .name{
-      font-size:42px!important;
-      margin-bottom:8px!important;
-    }
-    .pdf-mode .subtitle{
-      font-size:16px!important;
-      line-height:1.6!important;
-    }
-    .pdf-mode .avatar{
-      width:110px!important;
-      height:110px!important;
-      margin-bottom:15px!important;
-    }
-    .pdf-mode .chips{
-      justify-content:center!important;
-    }
-    .pdf-mode .chip{
-      font-size:14px!important;
-      padding:8px 14px!important;
-    }
-    .pdf-mode .section-title{
-      font-size:20px!important;
-      margin:10px 0 15px!important;
-      border-bottom:2px solid #0284c7!important;
-      padding-bottom:6px!important;
-    }
-    .pdf-mode .lead{
-      font-size:16px!important;
-      line-height:1.7!important;
-      margin-bottom:0!important;
-    }
-    .pdf-mode .skill-level{
-      font-size:16px!important;
-      margin-bottom:12px!important;
-    }
-    .pdf-mode .skill-list-text{
-      font-size:15px!important;
-      margin:8px 0 0 20px!important;
-    }
-    .pdf-mode .skill-list-text li{
-      margin:8px 0!important;
-      line-height:1.6!important;
-    }
-    .pdf-mode .tech-item{
-      margin:8px 0!important;
-    }
-    .pdf-mode .tech-label{
-      font-size:14px!important;
-      min-width:90px!important;
-    }
-    .pdf-mode .tech-value{
-      font-size:14px!important;
-      line-height:1.6!important;
-    }
-    .pdf-mode .pill{
-      font-size:13px!important;
-      padding:6px 12px!important;
-      margin:4px 6px 4px 0!important;
-    }
-    .pdf-mode .role,
-    .pdf-mode .project{
-      padding:15px!important;
-      margin-bottom:12px!important;
-      page-break-inside:avoid;
-      width: 100%!important;
-    }
-    .pdf-mode .role h3,
-    .pdf-mode .project h3{
-      font-size:18px!important;
-      margin-bottom:6px!important;
-    }
-    .pdf-mode .role .company{
-      font-size:18px!important;
-    }
-    .pdf-mode .role .range,
-    .pdf-mode .project .desc{
-      font-size:14px!important;
-      margin-bottom:8px!important;
-      line-height:1.6!important;
-    }
-    .pdf-mode .project .highlight{
-      font-size:15px!important;
-      margin:10px 0 6px!important;
-    }
-    .pdf-mode .role ul,
-    .pdf-mode .project ul{
-      font-size:14px!important;
-      margin:8px 0 0 20px!important;
-    }
-    .pdf-mode .role li,
-    .pdf-mode .project li{
-      margin:6px 0!important;
-      line-height:1.6!important;
-    }
-    .pdf-mode .item h4{
-      font-size:16px!important;
-      margin-bottom:4px!important;
-    }
-    .pdf-mode .item .meta{
-      font-size:14px!important;
-    }
-    .pdf-mode aside .section{
-      margin-bottom:15px!important;
-    }
-    .pdf-mode .list .item{
-      margin-bottom:10px!important;
-    }
-    .pdf-mode a{
-      font-size:14px!important;
-    }
-    .pdf-mode .timeline{
-      width: 100%!important;
-    }
-    .pdf-mode .list{
-      width: 100%!important;
-    }
-    .pdf-mode .chip{
-      border:1px solid #999!important;
-      background:#f5f5f5!important;
-      color:#000!important;
-    }
-    .pdf-mode .pill{
-      border:1px solid #0284c7!important;
-      background:#e0f2fe!important;
-      color:#0284c7!important;
-    }
-    .pdf-mode .section-title{
-      color:#0284c7!important;
-    }
-    .pdf-mode .project,
-    .pdf-mode .role{
-      background:#f8fafc!important;
-      border:1px solid #e2e8f0!important;
-    }
-    .pdf-mode .project h3{
-      color:#0284c7!important;
-    }
-    .pdf-mode .highlight{
-      color:#0891b2!important;
-    }
-    .pdf-mode .tech-label,
-    .pdf-mode .skill-level{
-      color:#0284c7!important;
-    }
-    .pdf-mode a{
-      color:#0066cc!important;
-    }
-    
+
     @media print{
       body{background:#fff;color:#000}
       .controls{display:none!important}
@@ -381,10 +188,6 @@
       <span id="themeIcon">🌙</span>
       <span id="themeText">淺色模式</span>
     </button>
-    <button class="btn" onclick="exportPDF()">
-      <span>📄</span>
-      <span>匯出 PDF</span>
-    </button>
   </div>
 
   <div class="wrap" id="resume-content">
@@ -392,7 +195,7 @@
     <!-- Header -->
     <div class="header">
       <!-- 頭像區塊 - 請替換 src 為你的照片路徑 -->
-      <img src="https://via.placeholder.com/120" alt="陳昱勳" class="avatar">
+      <!-- <img src="https://via.placeholder.com/120" alt="陳昱勳" class="avatar"> -->
       
       <div class="header-text">
         <div class="name">陳昱勳</div>
@@ -727,58 +530,7 @@
         themeText.textContent = '淺色模式';
       }
     }
-    
-    function exportPDF() {
-      const element = document.getElementById('resume-content');
-      const controls = document.querySelector('.controls');
-      const html = document.documentElement;
-      const body = document.body;
-      
-      controls.style.display = 'none';
-      
-      const currentTheme = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', 'light');
-      body.classList.add('pdf-mode');
-      
-      const opt = {
-        margin: [5, 5, 5, 5],
-        filename: '陳昱勳_履歷.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-          scale: 2.5,
-          useCORS: true,
-          letterRendering: true,
-          logging: false,
-          backgroundColor: '#ffffff',
-          width: element.scrollWidth,
-          height: element.scrollHeight
-        },
-        jsPDF: { 
-          unit: 'mm', 
-          format: 'a4', 
-          orientation: 'landscape',
-          compress: true
-        },
-        pagebreak: { 
-          mode: ['avoid-all', 'css', 'legacy'],
-          before: '.page-break',
-          avoid: ['.card', '.role', '.project', '.item', '.header']
-        }
-      };
-      
-      html2pdf().set(opt).from(element).save().then(() => {
-        controls.style.display = 'flex';
-        html.setAttribute('data-theme', currentTheme);
-        body.classList.remove('pdf-mode');
-      }).catch(err => {
-        console.error('PDF 匯出失敗:', err);
-        controls.style.display = 'flex';
-        html.setAttribute('data-theme', currentTheme);
-        body.classList.remove('pdf-mode');
-        alert('PDF 匯出失敗,請再試一次');
-      });
-    }
-    
+
     // 頁面載入完成後初始化
     window.addEventListener('DOMContentLoaded', () => {
       // 恢復主題設定

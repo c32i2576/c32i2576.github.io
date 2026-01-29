@@ -241,6 +241,18 @@
       border: 1px solid #ddd !important;
     }
 
+    body.pdf-mode .contact-web {
+      display: none !important;
+    }
+
+    body.pdf-mode .contact-phone {
+      display: block !important;
+    }
+
+    body.pdf-mode .contact-chip {
+      display: none !important;
+    }
+
     @media print{
       body{background:#fff;color:#000}
       .controls{display:none!important}
@@ -290,7 +302,7 @@
         
         <div class="chips">
           <div class="chip">📍 嘉義縣,台灣</div>
-          <a href="mailto:c3212576@gmail.com" class="chip">📧 聯絡方式</a>
+          <a href="mailto:c3212576@gmail.com" class="chip contact-chip">📧 聯絡方式</a>
         </div>
       </div>
     </div>
@@ -321,7 +333,7 @@
             <div class="skill-tech-group">
               <div class="tech-item">
                 <span class="tech-label">Backend</span>
-                <span class="tech-value">Python / PHP / C#</span>
+                <span class="tech-value">Python / Nodejs / PHP / C# </span>
               </div>
               <div class="tech-item">
                 <span class="tech-label">Frontend</span>
@@ -378,11 +390,14 @@
         <div class="card section">
           <div class="section-title">聯絡</div>
           <div class="list">
-            <div class="item">
+            <div class="item contact-email">
               <a href="mailto:c3212576@gmail.com" class="mono">c3212576@gmail.com</a>
             </div>
-            <div class="item">
+            <div class="item contact-web">
               <a href="https://cake.me/個人頁" target="_blank">Cake.me 個人頁</a>
+            </div>
+            <div class="item contact-phone" style="display: none;">
+              <span class="mono">0988-713-504</span>
             </div>
           </div>
         </div>

@@ -241,6 +241,18 @@
       border: 1px solid #ddd !important;
     }
 
+    body.pdf-mode .contact-web {
+      display: none !important;
+    }
+
+    body.pdf-mode .contact-phone {
+      display: block !important;
+    }
+
+    body.pdf-mode .contact-chip {
+      display: none !important;
+    }
+
     @media print{
       body{background:#fff;color:#000}
       .controls{display:none!important}
@@ -290,7 +302,7 @@
         
         <div class="chips">
           <div class="chip">📍 嘉義縣,台灣</div>
-          <a href="mailto:c3212576@gmail.com" class="chip">📧 聯絡方式</a>
+          <a href="mailto:c3212576@gmail.com" class="chip contact-chip">📧 聯絡方式</a>
         </div>
       </div>
     </div>
@@ -321,7 +333,7 @@
             <div class="skill-tech-group">
               <div class="tech-item">
                 <span class="tech-label">Backend</span>
-                <span class="tech-value">Python / PHP / C#</span>
+                <span class="tech-value">Python / Nodejs / PHP / C# </span>
               </div>
               <div class="tech-item">
                 <span class="tech-label">Frontend</span>
@@ -378,11 +390,14 @@
         <div class="card section">
           <div class="section-title">聯絡</div>
           <div class="list">
-            <div class="item">
+            <div class="item contact-email">
               <a href="mailto:c3212576@gmail.com" class="mono">c3212576@gmail.com</a>
             </div>
-            <div class="item">
+            <div class="item contact-web">
               <a href="https://cake.me/個人頁" target="_blank">Cake.me 個人頁</a>
+            </div>
+            <div class="item contact-phone" style="display: none;">
+              <span class="mono">0988-713-504</span>
             </div>
           </div>
         </div>
@@ -398,8 +413,8 @@
               </h3>
               <div class="range">2024/11 – 2025/12</div>
               <ul>
-                <li>組織團隊、提供技術建議並建置發電裝置監控系統。</li>
-                <li>以工業電腦監控發電資訊並透過並聯器與市電併聯,支援線電憑證。</li>
+                <li>規劃與建置高穩定性的發電裝置即時監控系統,整合工業電腦與硬體感測設備進行資料擷取與邊緣運算處理。</li>
+                <li>開發硬體通訊協議串接模組,精準收集並聯器發電資訊與市電併聯狀態,並架構綠電憑證數據支援系統,確保資料傳輸的即時性與準確度。</li>
               </ul>
             </div>
 
@@ -409,8 +424,10 @@
               </h3>
               <div class="range">2024/07 – 2025/11</div>
               <ul>
-                <li>研究導入 AI、訓練與商業化,組建 AI 團隊。</li>
-                <li>LINE 串接 OpenAI / Gemini + RAG:建立公司 AI 技術力。</li>
+                <li>主導公司 AI 技術轉型與商業化落地,從零組建並帶領 AI 研發團隊,成功將尖端技術轉化為企業級解決方案。</li>
+                <li>策劃與交付多項關鍵 AI 產品,包含「AI Agent 企業顧問平台」與「家庭健康照護 App」,親自撰寫產品需求文件 (PRD) 並規劃系統架構,精準對接市場需求與投資人標準。</li>
+                <li>推動跨產業創新應用,為美髮業開發專屬 AI 圖像生成工具(實現剪髮前高擬真臉型與髮色預覽),並整合 LINE API、Ollama、ChatGPT 與 RAG 技術,打造智慧接單與客服機器人,大幅提升客製化服務效率與產品推薦轉換率。</li>
+                <li>建置自動化資料處理流水線,運用 Python 與多 Agent 架構開發金融新聞爬蟲與分析系統,每日自動產出高價值投資資訊彙整。</li>
               </ul>
             </div>
 
@@ -420,9 +437,9 @@
               </h3>
               <div class="range">2022/06 – 2024/08</div>
               <ul>
-                <li>全面負責公司營運與策略規劃,帶領跨職能團隊達成年度目標。</li>
-                <li>跨領域溝通與協作,促進部門間合作與資源整合。攝影、行銷、平面美術。</li>
-                <li>落實人事與簽核流程,形成自有產品。</li>
+                <li>統籌公司整體營運與商業策略規劃,帶領跨職能團隊(含技術、行銷、平面美術攝影等)達成年度營收目標。</li>
+                <li>主導內部數位轉型,將繁瑣的人事與簽核流程標準化,並成功將內部系統轉化為可對外銷售的「自有軟體產品」,創造額外商業價值。</li>
+                <li>建立跨部門高效協作機制,精準對接市場需求與開發資源,確保產品順利落地與商業化。</li>
               </ul>
             </div>
 
@@ -432,9 +449,9 @@
               </h3>
               <div class="range">2020/01 – 2022/06</div>
               <ul>
-                <li>帶領 15 人跨職能團隊,訓練 20+ 新人。</li>
-                <li>女士內衣品牌 ERP+POS:整合試衣管理與 3D 人體掃描,提供 11 種優惠計算與建議路徑,提高回購率。</li>
-                <li>物流整合:建立約時段貨員流程、串接中國信託行直通金流,提升運能。</li>
+                <li>架構並帶領 15 人技術團隊,制定開發規範並完成 20+ 位工程師的技術培訓與戰力養成。</li>
+                <li>設計與開發「女士內衣品牌 ERP+POS 系統」,整合 3D 人體掃描與試衣管理技術,並實作 11 種複雜的優惠計算模型與建議路徑演算法,成功提升系統導購準確率與客戶回購率。</li>
+                <li>建置跨國物流整合平台,架構預約時段派車流程,並安全串接中國信託企直連金流 API,實現財務自動化與高併發運能優化。</li>
               </ul>
             </div>
 
@@ -444,8 +461,8 @@
               </h3>
               <div class="range">2019/07 – 2020/02</div>
               <ul>
-                <li>物流系統整合:串接中港台電商平台；月處理量由 3,000 件提升至 40,000 件,效率提升 3 倍以上。</li>
-                <li>體育班系統:報名、繳費、點數與人數管理,資訊透明化。</li>
+                <li>開發並優化跨國物流系統 API 串接,成功整合中港台多家大型電商平台數據;透過資料庫優化與系統重構,將月處理量從 3,000 件大幅提升至 40,000 件,系統處理效率提升 3 倍以上。</li>
+                <li>實作體育班管理系統全端架構,完成線上報名、繳費串接、點數邏輯與高併發人數控管模組,確保系統資訊透明化與高可用性。</li>
               </ul>
             </div>
 

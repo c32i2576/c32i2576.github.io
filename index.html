@@ -136,6 +136,7 @@
       line-height:1.6;
       color:var(--ink);
     }
+    .skill-pills{margin-left:12px;display:block}
     .skill-tech-group{
       display:flex;
       flex-direction:column;
@@ -344,35 +345,51 @@
             <div class="section-title">技能專長 Technical Skills</div>
             <div class="skill-category">
               <div class="skill-level core">雲端架構與 DevOps</div>
-              <ul class="skill-list-text">
-                <li>精通 GCP（Cloud Run, Cloud SQL）與 AWS（EC2, ALB, RDS）架構設計</li>
-                <li>具備 GitHub Actions、Cloud Build CI/CD 自動化流水線建置經驗</li>
-              </ul>
+              <div class="skill-pills">
+                <span class="pill">GCP (Cloud Run, Cloud SQL)</span>
+                <span class="pill">AWS (EC2, ALB, RDS)</span>
+                <span class="pill">GitHub Actions</span>
+                <span class="pill">Cloud Build</span>
+                <span class="pill">CI/CD</span>
+              </div>
             </div>
 
             <div class="skill-category">
               <div class="skill-level main">AI 應用與後端開發</div>
-              <ul class="skill-list-text">
-                <li>Python（LangChain）、PHP（Laravel）、C#、Node.js</li>
-                <li>熟悉 OpenAI、Gemini、Ollama 與 RAG 系統架構與落地應用</li>
-              </ul>
+              <div class="skill-pills">
+                <span class="pill">Python (LangChain)</span>
+                <span class="pill">PHP (Laravel)</span>
+                <span class="pill">C#</span>
+                <span class="pill">Node.js</span>
+                <span class="pill">OpenAI</span>
+                <span class="pill">Gemini</span>
+                <span class="pill">Ollama</span>
+                <span class="pill">RAG 架構</span>
+              </div>
             </div>
 
             <div class="skill-category">
               <div class="skill-level main">資料庫與快取機制</div>
-              <ul class="skill-list-text">
-                <li>MySQL、MSSQL、MariaDB 關聯式資料庫設計與調校</li>
-                <li>具備強大 T-SQL 效能優化能力，熟悉 Redis 快取與高併發資料處理</li>
-              </ul>
+              <div class="skill-pills">
+                <span class="pill">MySQL</span>
+                <span class="pill">MSSQL</span>
+                <span class="pill">MariaDB</span>
+                <span class="pill">T-SQL 優化</span>
+                <span class="pill">Redis</span>
+                <span class="pill">高併發處理</span>
+              </div>
             </div>
 
             <div class="skill-category">
               <div class="skill-level plus">前端與系統整合</div>
-              <ul class="skill-list-text">
-                <li>Vue、React、JavaScript</li>
-                <li>WebSocket 即時通訊、RESTful API 設計與串接</li>
-                <li>IoT 硬體控制（Raspberry Pi）</li>
-              </ul>
+              <div class="skill-pills">
+                <span class="pill">Vue.js</span>
+                <span class="pill">React</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">WebSocket</span>
+                <span class="pill">RESTful API</span>
+                <span class="pill">IoT (Raspberry Pi)</span>
+              </div>
             </div>
           </div>
         </aside>
@@ -399,18 +416,9 @@
                   <li><strong>打造新營收模式：</strong> 推動人事與簽核流程數位化重構，並將內部系統產品化為可對外銷售的軟體方案，讓組織效率提升同時轉化為新商模與對外服務能力。</li>
                 </ul>
               </div>
-            </div>
-          </div>
-        </main>
-      </section>
 
-      <section class="page page-two">
-        <main>
-          <div class="section">
-            <div class="section-title">早期經歷 Early Career</div>
-            <div class="timeline">
               <div class="role">
-                <h3><span class="company">創力美股份有限公司</span> | 系統架構與核心開發（技術深耕階段）</h3>
+                <h3><span class="company">創力美股份有限公司</span> | 系統架構與核心開發</h3>
                 <div class="range">2019/07 – 2022/06</div>
                 <ul>
                   <li><strong>打造高併發核心架構：</strong> 主導跨國物流平台與大型連鎖 POS 系統底層設計，透過鎖機制策略與 T-SQL 深度優化，將月處理量自 3,000 件提升至 40,000 件，整體效能提升 3 倍以上。</li>
@@ -438,7 +446,11 @@
               </div>
             </div>
           </div>
+        </main>
+      </section>
 
+      <section class="page page-two">
+        <main>
           <div class="section">
             <div class="section-title">重點專案經驗 Project Experience</div>
             <div class="timeline">

@@ -10,23 +10,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f172a;
-      --card:#111827;
-      --soft:#1f2937;
-      --ink:#e5e7eb;
-      --muted:#9ca3af;
-      --brand:#38bdf8;
-      --accent:#22d3ee;
+      --bg:#18181b;
+      --card:#27272a;
+      --soft:#3f3f46;
+      --ink:#f4f4f5;
+      --muted:#a1a1aa;
+      --brand:#fafafa;
+      --accent:#e4e4e7;
     }
     
     [data-theme="light"] {
-      --bg:#f8fafc;
+      --bg:#fafafa;
       --card:#ffffff;
-      --soft:#f1f5f9;
-      --ink:#0f172a;
-      --muted:#64748b;
-      --brand:#0284c7;
-      --accent:#0891b2;
+      --soft:#f4f4f5;
+      --ink:#18181b;
+      --muted:#71717a;
+      --brand:#27272a;
+      --accent:#52525b;
     }
     
     *{box-sizing:border-box;margin:0;padding:0;}
@@ -83,7 +83,7 @@
     .name{font-size:48px;line-height:1.1;font-weight:900;letter-spacing:0.5px;margin:0 0 8px 0}
     .subtitle{color:var(--muted);font-size:16px;margin:0}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(11,18,32,0.3));border:1px solid rgba(56,189,248,0.2);color:var(--ink);font-size:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(0,0,0,0.1));border:1px solid rgba(128,128,128,0.2);color:var(--ink);font-size:14px}
     .resume-pages{display:flex;flex-direction:column;gap:28px}
     .page{
       display:grid;
@@ -94,9 +94,9 @@
     .page:last-child{page-break-after:auto}
     @media(min-width:960px){
       .page.page-one{grid-template-columns:320px 1fr;gap:28px}
-      .page.page-two{grid-template-columns:1fr 320px;gap:28px}
+      .page.page-two{display:block}
     }
-    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
+    .card{background:var(--card);border:1px solid rgba(128,128,128,0.15);box-shadow:0 10px 30px rgba(0,0,0,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
     .section{page-break-inside:avoid;margin-bottom:20px}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
     .lead{font-size:16px;line-height:1.65;color:var(--ink);margin-bottom:16px}
@@ -158,15 +158,15 @@
       line-height:1.6;
       font-size:14px;
     }
-    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(128,128,128,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(128,128,128,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
-    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
+    .role{background:var(--soft);padding:16px;border:1px solid rgba(128,128,128,0.15);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .role h3{margin:0 0 6px;font-size:18px}
     .role .company{color:var(--ink);font-weight:700}
     .role .range{color:var(--muted);font-size:14px}
     .role ul{margin:10px 0 0 18px;padding:0}
     .role li{margin:6px 0;line-height:1.65}
-    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
+    .project{background:var(--soft);padding:16px;border:1px solid rgba(128,128,128,0.15);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .project h3{margin:0 0 8px;font-size:17px;color:var(--brand)}
     .project .desc{color:var(--muted);font-size:14px;margin-bottom:10px;line-height:1.6}
     .project .highlight{color:var(--accent);font-weight:600;font-size:14px;margin:10px 0 4px}
@@ -220,17 +220,17 @@
     }
 
     body.pdf-mode .section-title {
-      color: #0284c7 !important;
+      color: #27272a !important;
     }
 
     body.pdf-mode .skill-level.core {
-      border-color: #0284c7 !important;
-      color: #0284c7 !important;
+      border-color: #27272a !important;
+      color: #27272a !important;
     }
 
     body.pdf-mode .skill-level.main {
-      border-color: #0891b2 !important;
-      color: #0891b2 !important;
+      border-color: #52525b !important;
+      color: #52525b !important;
     }
 
     body.pdf-mode .skill-level.plus {
@@ -244,7 +244,7 @@
 
     body.pdf-mode .project h3,
     body.pdf-mode a {
-      color: #0066cc !important;
+      color: #444 !important;
     }
 
     body.pdf-mode .role,
@@ -339,6 +339,42 @@
               <li><strong>支撐業務擴張與營收：</strong> 建置連鎖門市 ERP+POS 與 O2O 整合架構，成功支援客戶由單店拓展至 8 間門市。</li>
             </ul>
           </div>
+
+          <div class="card section">
+            <div class="section-title">技能專長 Technical Skills</div>
+            <div class="skill-category">
+              <div class="skill-level core">雲端架構與 DevOps</div>
+              <ul class="skill-list-text">
+                <li>精通 GCP（Cloud Run, Cloud SQL）與 AWS（EC2, ALB, RDS）架構設計</li>
+                <li>具備 GitHub Actions、Cloud Build CI/CD 自動化流水線建置經驗</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-level main">AI 應用與後端開發</div>
+              <ul class="skill-list-text">
+                <li>Python（LangChain）、PHP（Laravel）、C#、Node.js</li>
+                <li>熟悉 OpenAI、Gemini、Ollama 與 RAG 系統架構與落地應用</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-level main">資料庫與快取機制</div>
+              <ul class="skill-list-text">
+                <li>MySQL、MSSQL、MariaDB 關聯式資料庫設計與調校</li>
+                <li>具備強大 T-SQL 效能優化能力，熟悉 Redis 快取與高併發資料處理</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-level plus">前端與系統整合</div>
+              <ul class="skill-list-text">
+                <li>Vue、React、JavaScript</li>
+                <li>WebSocket 即時通訊、RESTful API 設計與串接</li>
+                <li>IoT 硬體控制（Raspberry Pi）</li>
+              </ul>
+            </div>
+          </div>
         </aside>
 
         <main>
@@ -364,7 +400,14 @@
                 </ul>
               </div>
             </div>
-          </div>          <div class="section">
+          </div>
+        </main>
+      </section>
+
+      <section class="page page-two">
+        <main>
+          <div class="section">
+            <div class="section-title">早期經歷 Early Career</div>
             <div class="timeline">
               <div class="role">
                 <h3><span class="company">創力美股份有限公司</span> | 系統架構與核心開發（技術深耕階段）</h3>
@@ -427,50 +470,6 @@
             </div>
           </div>
         </main>
-      </section>
-
-      <section class="page page-two">
-        <main>
-
-        </main>
-
-        <aside>
-          <div class="card section">
-            <div class="section-title">技能專長 Technical Skills</div>
-            <div class="skill-category">
-              <div class="skill-level core">雲端架構與 DevOps</div>
-              <ul class="skill-list-text">
-                <li>精通 GCP（Cloud Run, Cloud SQL）與 AWS（EC2, ALB, RDS）架構設計</li>
-                <li>具備 GitHub Actions、Cloud Build CI/CD 自動化流水線建置經驗</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-level main">AI 應用與後端開發</div>
-              <ul class="skill-list-text">
-                <li>Python（LangChain）、PHP（Laravel）、C#、Node.js</li>
-                <li>熟悉 OpenAI、Gemini、Ollama 與 RAG 系統架構與落地應用</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-level main">資料庫與快取機制</div>
-              <ul class="skill-list-text">
-                <li>MySQL、MSSQL、MariaDB 關聯式資料庫設計與調校</li>
-                <li>具備強大 T-SQL 效能優化能力，熟悉 Redis 快取與高併發資料處理</li>
-              </ul>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-level plus">前端與系統整合</div>
-              <ul class="skill-list-text">
-                <li>Vue、React、JavaScript</li>
-                <li>WebSocket 即時通訊、RESTful API 設計與串接</li>
-                <li>IoT 硬體控制（Raspberry Pi）</li>
-              </ul>
-            </div>
-          </div>
-        </aside>
       </section>
     </div>
   </div>

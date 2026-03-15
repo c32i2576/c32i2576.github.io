@@ -4,34 +4,34 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>陳昱勳｜履歷</title>
-  <meta name="description" content="擁有 7+ 年全端開發與技術管理經驗,專長大型系統架構、AI 導入與跨平台整合。"/>
+  <meta name="description" content="7+ 年全端、技術管理與產品落地經驗，專注高併發架構、AI 導入與數位轉型，能以技術驅動營運效率與商業成長。"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f172a;
-      --card:#111827;
-      --soft:#1f2937;
-      --ink:#e5e7eb;
-      --muted:#9ca3af;
-      --brand:#38bdf8;
-      --accent:#22d3ee;
+      --bg:#18181b;
+      --card:#27272a;
+      --soft:#3f3f46;
+      --ink:#f4f4f5;
+      --muted:#a1a1aa;
+      --brand:#fafafa;
+      --accent:#e4e4e7;
     }
     
     [data-theme="light"] {
-      --bg:#f8fafc;
+      --bg:#fafafa;
       --card:#ffffff;
-      --soft:#f1f5f9;
-      --ink:#0f172a;
-      --muted:#64748b;
-      --brand:#0284c7;
-      --accent:#0891b2;
+      --soft:#f4f4f5;
+      --ink:#18181b;
+      --muted:#71717a;
+      --brand:#27272a;
+      --accent:#52525b;
     }
     
     *{box-sizing:border-box;margin:0;padding:0;}
     html,body{background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;transition:background-color 0.3s ease, color 0.3s ease;line-height:1.5;}
-    .wrap{max-width:980px;margin:40px auto;padding:0 20px}
+    .wrap{max-width:1120px;margin:40px auto;padding:0 20px}
     
     .controls {
       position: fixed;
@@ -83,10 +83,20 @@
     .name{font-size:48px;line-height:1.1;font-weight:900;letter-spacing:0.5px;margin:0 0 8px 0}
     .subtitle{color:var(--muted);font-size:16px;margin:0}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(11,18,32,0.3));border:1px solid rgba(56,189,248,0.2);color:var(--ink);font-size:14px}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:900px){.grid{grid-template-columns:300px 1fr;gap:28px}}
-    .card{background:var(--card);border:1px solid rgba(56,189,248,0.18);box-shadow:0 10px 30px rgba(2,6,23,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--soft),rgba(0,0,0,0.1));border:1px solid rgba(128,128,128,0.2);color:var(--ink);font-size:14px}
+    .resume-pages{display:flex;flex-direction:column;gap:28px}
+    .page{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      page-break-after:always;
+    }
+    .page:last-child{page-break-after:auto}
+    @media(min-width:960px){
+      .page.page-one{grid-template-columns:320px 1fr;gap:28px}
+      .page.page-two{display:block}
+    }
+    .card{background:var(--card);border:1px solid rgba(128,128,128,0.15);box-shadow:0 10px 30px rgba(0,0,0,.15);border-radius:18px;padding:20px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:20px}
     .section{page-break-inside:avoid;margin-bottom:20px}
     .section-title{font-weight:800;font-size:18px;letter-spacing:1px;text-transform:uppercase;color:var(--brand);margin:8px 0 14px}
     .lead{font-size:16px;line-height:1.65;color:var(--ink);margin-bottom:16px}
@@ -126,6 +136,7 @@
       line-height:1.6;
       color:var(--ink);
     }
+    .skill-pills{margin-left:12px;display:block}
     .skill-tech-group{
       display:flex;
       flex-direction:column;
@@ -148,20 +159,22 @@
       line-height:1.6;
       font-size:14px;
     }
-    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(56,189,248,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(56,189,248,.08)}
+    .pill{display:inline-block;padding:6px 10px;border:1px solid rgba(128,128,128,.35);border-radius:999px;margin:4px 6px 0 0;font-size:13px;color:var(--brand);background:rgba(128,128,128,.08)}
     .timeline{display:flex;flex-direction:column;gap:18px}
-    .role{background:var(--soft);padding:16px;border:1px solid rgba(56,189,248,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
+    .role{background:var(--soft);padding:16px;border:1px solid rgba(128,128,128,0.15);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .role h3{margin:0 0 6px;font-size:18px}
     .role .company{color:var(--ink);font-weight:700}
     .role .range{color:var(--muted);font-size:14px}
     .role ul{margin:10px 0 0 18px;padding:0}
     .role li{margin:6px 0;line-height:1.65}
-    .project{background:var(--soft);padding:16px;border:1px solid rgba(34,211,238,.18);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
+    .project{background:var(--soft);padding:16px;border:1px solid rgba(128,128,128,0.15);border-radius:14px;transition:background-color 0.3s ease;page-break-inside:avoid;margin-bottom:16px}
     .project h3{margin:0 0 8px;font-size:17px;color:var(--brand)}
     .project .desc{color:var(--muted);font-size:14px;margin-bottom:10px;line-height:1.6}
     .project .highlight{color:var(--accent);font-weight:600;font-size:14px;margin:10px 0 4px}
     .project ul{margin:6px 0 0 18px;padding:0}
     .project li{margin:4px 0;line-height:1.6;font-size:14px}
+    .project-kicker{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+    .page-note{color:var(--muted);font-size:13px;margin-top:10px}
     .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,"Liberation Mono","DejaVu Sans Mono","Courier New",monospace;}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
@@ -183,9 +196,9 @@
       display: none !important;
     }
 
-    body.pdf-mode .grid {
-      grid-template-columns: 1fr !important;
-      gap: 20px;
+    body.pdf-mode .resume-pages,
+    body.pdf-mode .page {
+      display: block !important;
     }
 
     body.pdf-mode .card {
@@ -208,17 +221,17 @@
     }
 
     body.pdf-mode .section-title {
-      color: #0284c7 !important;
+      color: #27272a !important;
     }
 
     body.pdf-mode .skill-level.core {
-      border-color: #0284c7 !important;
-      color: #0284c7 !important;
+      border-color: #27272a !important;
+      color: #27272a !important;
     }
 
     body.pdf-mode .skill-level.main {
-      border-color: #0891b2 !important;
-      color: #0891b2 !important;
+      border-color: #52525b !important;
+      color: #52525b !important;
     }
 
     body.pdf-mode .skill-level.plus {
@@ -232,7 +245,7 @@
 
     body.pdf-mode .project h3,
     body.pdf-mode a {
-      color: #0066cc !important;
+      color: #444 !important;
     }
 
     body.pdf-mode .role,
@@ -260,7 +273,7 @@
       .chip{border:1px solid #999;background:#f5f5f5}
       .pill{border:1px solid #999;background:#f0f0f0}
       a{color:#0066cc}
-      .grid{grid-template-columns:1fr!important}
+      .resume-pages,.page{display:block!important}
       .wrap{max-width:100%!important;padding:0!important}
     }
     
@@ -298,315 +311,178 @@
       
       <div class="header-text">
         <div class="name">陳昱勳</div>
-        <div class="subtitle">7+ 年全端開發 / 技術管理｜大型系統架構、AI 導入、跨平台整合</div>
+        <div class="subtitle">技術長 CTO｜資深全端架構師｜7+ 年技術管理、系統架構與產品落地經驗</div>
         
         <div class="chips">
-          <div class="chip">📍 嘉義縣,台灣</div>
-          <a href="mailto:c3212576@gmail.com" class="chip contact-chip">📧 聯絡方式</a>
+          <div class="chip">📍 嘉義縣，台灣</div>
+          <a href="mailto:c3212576@gmail.com" class="chip">📧 c3212576@gmail.com</a>
+          <div class="chip">📱 0988-713-504</div>
+          <a href="https://github.com/c32i2576" target="_blank" class="chip">💻 GitHub</a>
+          <div class="chip">🔗 LinkedIn 可提供</div>
         </div>
       </div>
     </div>
 
-    <div class="grid">
-      <aside>
-        <div class="card section">
-          <div class="section-title">簡介</div>
-          <p class="lead">擅長大型系統架構設計、AI 導入與跨平台整合。具 15 人以上團隊帶領經驗,推動數位轉型與產品商業化,重視溝通、跨部門協作與持續學習。</p>
-        </div>
+    <div class="resume-pages">
+      <section class="page page-one">
+        <aside>
+          <div class="card section">
+            <div class="section-title">專業摘要 Executive Summary</div>
+            <p class="lead">具備 7 年以上全端開發、系統架構與技術管理經驗，長期橫跨產品規劃、技術決策、營運協調與跨部門整合。擅長在高成長與高複雜度情境下，建立可落地的技術路線圖，推動 AI、雲端與企業系統整合專案從 0 到 1 上線並商業化。</p>
+            <p class="lead">曾帶領 15 人以上跨職能團隊，能以 ROI、交付風險與資源效率作為決策基礎，將高併發架構、LLM / RAG 與流程數位化能力，轉化為營收成長、營運效率提升與新商模落地。</p>
+          </div>
 
-        <div class="card section">
-          <div class="section-title">技能</div>
-          
-          <div class="skill-category">
-            <div class="skill-level core">核心專長</div>
+          <div class="card section">
+            <div class="section-title">核心成就 Key Achievements</div>
             <ul class="skill-list-text">
-              <li>系統架構設計</li>
-              <li>ERP / POS 整合</li>
-              <li>雲端高併發架構</li>
-              <li>AI 導入與商業化</li>
-              <li>跨平台系統整合</li>
+              <li><strong>推動 AI 商業化：</strong> 主導整合 LINE API、Ollama 與 RAG 的 AI 顧問與客服系統，將生成式 AI 轉化為可營運、可交付的企業服務方案。</li>
+              <li><strong>突破系統效能瓶頸：</strong> 透過 T-SQL 優化與演算法重構，將全國性醫療資料分析速度提升 10 倍，並讓跨國物流系統處理效率提升 3 倍。</li>
+              <li><strong>支撐業務擴張與營收：</strong> 建置連鎖門市 ERP+POS 與 O2O 整合架構，成功支援客戶由單店拓展至 8 間門市。</li>
             </ul>
           </div>
 
-          <div class="skill-category">
-            <div class="skill-level main">主要技術</div>
-            <div class="skill-tech-group">
-              <div class="tech-item">
-                <span class="tech-label">Backend</span>
-                <span class="tech-value">Python / Nodejs / PHP / C# </span>
-              </div>
-              <div class="tech-item">
-                <span class="tech-label">Frontend</span>
-                <span class="tech-value">Vue / React / JavaScript</span>
-              </div>
-              <div class="tech-item">
-                <span class="tech-label">Database</span>
-                <span class="tech-value">MySQL / MSSQL / MariaDB / NoSQL</span>
-              </div>
-              <div class="tech-item">
-                <span class="tech-label">Cloud</span>
-                <span class="tech-value">AWS (EC2 / ALB / Auto Scaling / RDS) / GCP</span>
-              </div>
-              <div class="tech-item">
-                <span class="tech-label">其他</span>
-                <span class="tech-value">Redis / WebSocket / RESTful API</span>
+          <div class="card section">
+            <div class="section-title">技能專長 Technical Skills</div>
+            <div class="skill-category">
+              <div class="skill-level core">雲端架構與 DevOps</div>
+              <div class="skill-pills">
+                <span class="pill">GCP (Cloud Run, Cloud SQL)</span>
+                <span class="pill">AWS (EC2, ALB, RDS)</span>
+                <span class="pill">GitHub Actions</span>
+                <span class="pill">Cloud Build</span>
+                <span class="pill">CI/CD</span>
               </div>
             </div>
-          </div>
 
-          <div class="skill-category">
-            <div class="skill-level plus">加分技能</div>
-            <ul class="skill-list-text">
-              <li>IoT 控制 (Raspberry Pi)</li>
-              <li>影像辨識 (CNN / TensorFlow)</li>
-              <li>LLM 整合 (OpenAI / Gemini / RAG)</li>
-              <li>LINE Bot 開發</li>
-            </ul>
-          </div>
-        </div>
+            <div class="skill-category">
+              <div class="skill-level main">AI 應用與後端開發</div>
+              <div class="skill-pills">
+                <span class="pill">Python (LangChain)</span>
+                <span class="pill">PHP (Laravel)</span>
+                <span class="pill">C#</span>
+                <span class="pill">Node.js</span>
+                <span class="pill">OpenAI</span>
+                <span class="pill">Gemini</span>
+                <span class="pill">Ollama</span>
+                <span class="pill">RAG 架構</span>
+              </div>
+            </div>
 
-        <div class="card section">
-          <div class="section-title">其他</div>
-          <div>
-            <span class="pill">專案管理</span>
-            <span class="pill">團隊訓練</span>
-            <span class="pill">系統整合</span>
-            <span class="pill">數位轉型</span>
-          </div>
-        </div>
+            <div class="skill-category">
+              <div class="skill-level main">資料庫與快取機制</div>
+              <div class="skill-pills">
+                <span class="pill">MySQL</span>
+                <span class="pill">MSSQL</span>
+                <span class="pill">MariaDB</span>
+                <span class="pill">T-SQL 優化</span>
+                <span class="pill">Redis</span>
+                <span class="pill">高併發處理</span>
+              </div>
+            </div>
 
-        <div class="card section">
-          <div class="section-title">語言</div>
-          <div class="list">
-            <div class="item">
-              <h4>中文:母語或雙語</h4>
-            </div>
-            <div class="item">
-              <h4>英文:初階</h4>
-            </div>
-          </div>
-        </div>
-
-        <div class="card section">
-          <div class="section-title">聯絡</div>
-          <div class="list">
-            <div class="item contact-email">
-              <a href="mailto:c3212576@gmail.com" class="mono">c3212576@gmail.com</a>
-            </div>
-            <div class="item contact-web">
-              <a href="https://cake.me/個人頁" target="_blank">Cake.me 個人頁</a>
-            </div>
-            <div class="item contact-phone" style="display: none;">
-              <span class="mono">0988-713-504</span>
+            <div class="skill-category">
+              <div class="skill-level plus">前端與系統整合</div>
+              <div class="skill-pills">
+                <span class="pill">Vue.js</span>
+                <span class="pill">React</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">WebSocket</span>
+                <span class="pill">RESTful API</span>
+                <span class="pill">IoT (Raspberry Pi)</span>
+              </div>
             </div>
           </div>
-        </div>
-      </aside>
+        </aside>
 
-      <main>
-        <div class="section">
-          <div class="section-title">工作經歷</div>
-          <div class="timeline">
-            <div class="role">
-              <h3>
-                <span class="company">日化能源科技股份有限公司</span> | 技術顧問
-              </h3>
-              <div class="range">2024/11 – 2025/12</div>
-              <ul>
-                <li>規劃與建置高穩定性的發電裝置即時監控系統,整合工業電腦與硬體感測設備進行資料擷取與邊緣運算處理。</li>
-                <li>開發硬體通訊協議串接模組,精準收集並聯器發電資訊與市電併聯狀態,並架構綠電憑證數據支援系統,確保資料傳輸的即時性與準確度。</li>
-              </ul>
-            </div>
+        <main>
+          <div class="section">
+            <div class="section-title">工作經歷 Work Experience</div>
+            <div class="timeline">
+              <div class="role">
+                <h3><span class="company">日化能源科技股份有限公司</span> | 技術顧問</h3>
+                <div class="range">2024/11 – 2025/12</div>
+                <ul>
+                  <li><strong>建構能源 IoT 監控能力：</strong> 規劃並建置發電裝置即時監控系統，整合工業電腦、感測設備與邊緣運算流程，建立高穩定度的現場數據採集與監控基礎。</li>
+                  <li><strong>打通設備資料鏈路：</strong> 開發硬體通訊模組，整合發電資訊、市電併聯狀態與綠電憑證所需資料，提升高頻傳輸情境下的即時性、完整性與可追溯性。</li>
+                </ul>
+              </div>
 
-            <div class="role">
-              <h3>
-                <span class="company">創力美股份有限公司</span> | 技術長
-              </h3>
-              <div class="range">2024/07 – 2025/11</div>
-              <ul>
-                <li>主導公司 AI 技術轉型與商業化落地,從零組建並帶領 AI 研發團隊,成功將尖端技術轉化為企業級解決方案。</li>
-                <li>策劃與交付多項關鍵 AI 產品,包含「AI Agent 企業顧問平台」與「家庭健康照護 App」,親自撰寫產品需求文件 (PRD) 並規劃系統架構,精準對接市場需求與投資人標準。</li>
-                <li>推動跨產業創新應用,為美髮業開發專屬 AI 圖像生成工具(實現剪髮前高擬真臉型與髮色預覽),並整合 LINE API、Ollama、ChatGPT 與 RAG 技術,打造智慧接單與客服機器人,大幅提升客製化服務效率與產品推薦轉換率。</li>
-                <li>建置自動化資料處理流水線,運用 Python 與多 Agent 架構開發金融新聞爬蟲與分析系統,每日自動產出高價值投資資訊彙整。</li>
-              </ul>
-            </div>
+              <div class="role">
+                <h3><span class="company">創力美股份有限公司</span> | 營運統籌 / 技術長 CTO</h3>
+                <div class="range">2019/07 – 2025/11</div>
+                <ul>
+                  <li><strong>主導營運與技術雙軌決策：</strong> 參與制定公司商業藍圖與年度重點策略，統籌技術、行銷與設計等跨職能團隊，以 ROI、交付風險與資源效率作為決策依據，支撐年度營收目標達成。</li>
+                  <li><strong>推進 AI 轉型與產品化：</strong> 主導公司 AI 技術轉型，策劃並交付「AI Agent 企業顧問平台」與「家庭健康照護 App」等產品，從需求定義、PRD 撰寫到交付路線圖皆親自主導。</li>
+                  <li><strong>打造新營收模式：</strong> 推動人事與簽核流程數位化重構，並將內部系統產品化為可對外銷售的軟體方案，讓組織效率提升同時轉化為新商模與對外服務能力。</li>
+                </ul>
+              </div>
 
-            <div class="role">
-              <h3>
-                <span class="company">創力美股份有限公司</span> | 總經理
-              </h3>
-              <div class="range">2022/06 – 2024/08</div>
-              <ul>
-                <li>統籌公司整體營運與商業策略規劃,帶領跨職能團隊(含技術、行銷、平面美術攝影等)達成年度營收目標。</li>
-                <li>主導內部數位轉型,將繁瑣的人事與簽核流程標準化,並成功將內部系統轉化為可對外銷售的「自有軟體產品」,創造額外商業價值。</li>
-                <li>建立跨部門高效協作機制,精準對接市場需求與開發資源,確保產品順利落地與商業化。</li>
-              </ul>
-            </div>
+              <div class="role">
+                <h3><span class="company">創力美股份有限公司</span> | 系統架構與核心開發</h3>
+                <div class="range">2019/07 – 2022/06</div>
+                <ul>
+                  <li><strong>打造高併發核心架構：</strong> 主導跨國物流平台與大型連鎖 POS 系統底層設計，透過鎖機制策略與 T-SQL 深度優化，將月處理量自 3,000 件提升至 40,000 件，整體效能提升 3 倍以上。</li>
+                  <li><strong>處理高複雜度業務場景：</strong> 整合 LINE API、Ollama 與 ChatGPT 建立智慧接單與客服機器人，並設計具 11 種優惠模型的 ERP+POS 系統，兼顧商業規則彈性、演算法效率與敏感資料保護。</li>
+                  <li><strong>建立可擴張的工程體系：</strong> 帶領 15 人技術團隊制定開發與 Code Review 規範，導入 GitHub Actions 與 Cloud Build 建立全自動化部署流程，提升交付穩定度與團隊擴張效率。</li>
+                </ul>
+              </div>
 
-            <div class="role">
-              <h3>
-                <span class="company">創力美股份有限公司</span> | 技術主管
-              </h3>
-              <div class="range">2020/01 – 2022/06</div>
-              <ul>
-                <li>架構並帶領 15 人技術團隊,制定開發規範並完成 20+ 位工程師的技術培訓與戰力養成。</li>
-                <li>設計與開發「女士內衣品牌 ERP+POS 系統」,整合 3D 人體掃描與試衣管理技術,並實作 11 種複雜的優惠計算模型與建議路徑演算法,成功提升系統導購準確率與客戶回購率。</li>
-                <li>建置跨國物流整合平台,架構預約時段派車流程,並安全串接中國信託企直連金流 API,實現財務自動化與高併發運能優化。</li>
-              </ul>
-            </div>
+              <div class="role">
+                <h3><span class="company">南華大學</span> | 助理工程師</h3>
+                <div class="range">2016/06 – 2017/08</div>
+                <ul>
+                  <li><strong>參與校園健康資料系統開發：</strong> 使用 ASP.NET Web Forms 與 C# 參與學生健康計畫相關系統建置，支援國中、國小學生資料彙整、異常追蹤與後續管理流程。</li>
+                  <li><strong>建置問卷上傳與管理流程：</strong> 協助新竹縣健康促進問卷系統開發，提供校方人員上傳問卷、維護資料與後台管理功能，提升資料收集與後續統計效率。</li>
+                </ul>
+              </div>
 
-            <div class="role">
-              <h3>
-                <span class="company">創力美股份有限公司</span> | 軟體工程師
-              </h3>
-              <div class="range">2019/07 – 2020/02</div>
-              <ul>
-                <li>開發並優化跨國物流系統 API 串接,成功整合中港台多家大型電商平台數據;透過資料庫優化與系統重構,將月處理量從 3,000 件大幅提升至 40,000 件,系統處理效率提升 3 倍以上。</li>
-                <li>實作體育班管理系統全端架構,完成線上報名、繳費串接、點數邏輯與高併發人數控管模組,確保系統資訊透明化與高可用性。</li>
-              </ul>
-            </div>
-
-            <div class="role">
-              <h3>
-                <span class="company">南華大學</span> | 計畫助理工程師
-              </h3>
-              <div class="range">2017/06 – 2018/06</div>
-              <ul>
-                <li>教育部學生健康計畫:全國學校健康資料蒐集、維護與異常追蹤平台。</li>
-                <li>新竹縣健康促進問卷:建置上傳與計流程。</li>
-              </ul>
-            </div>
-
-            <div class="role">
-              <h3>
-                <span class="company">向陽能源科技</span> | 工程師
-              </h3>
-              <div class="range">2016/11 – 2017/06</div>
-              <ul>
-                <li>內部網路建置與太陽能即時監控系統,提供異常通知與維運監測。</li>
-              </ul>
+              <div class="role">
+                <h3><span class="company">向陽能源科技</span> | 工務工程師</h3>
+                <div class="range">2015/11 – 2016/05</div>
+                <ul>
+                  <li><strong>處理基礎系統與設備維運：</strong> 負責頁面程式維護、硬體故障排除與網路環境整理，支援內部系統穩定運作與日常維護需求。</li>
+                  <li><strong>協助建置太陽能監控機制：</strong> 參與太陽能監測相關功能開發，協助呈現發電量與設備狀態，並提供異常通知能力，作為後續能源監控實務的早期基礎。</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
+        </main>
+      </section>
 
-        <div class="section">
-          <div class="section-title">專案經驗</div>
-          <div class="timeline">
-            <div class="project">
-              <h3>跨國物流與供應鏈追蹤系統</h3>
-              <div class="desc">主導架構「海外進口＋國內宅配」即時追蹤平台,無縫串接新竹物流、大榮及中港台多家大型跨境物流 API。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>財務自動化:</strong> 串接中信銀企直連 API 實現系統自動銷帳,將人工核銷錯誤率大幅降低</li>
-                <li><strong>效能突破:</strong> 開發雙平台原生 App,並獨創高效影像壓縮演算法解決 4K 高畫質圖片上傳瓶頸,傳輸速度提升約 50%</li>
-                <li><strong>流程優化:</strong> 建立標準化物流狀態機統整 PChome、全家等大型通路,包裹異常排查時間縮短約 30%</li>
-              </ul>
-            </div>
+      <section class="page page-two">
+        <main>
+          <div class="section">
+            <div class="section-title">重點專案經驗 Project Experience</div>
+            <div class="timeline">
+              <div class="project">
+                <div class="project-kicker">Supply Chain</div>
+                <h3>跨國物流與供應鏈追蹤系統</h3>
+                <ul>
+                  <li><strong>強化金流與財務效率：</strong> 串接中信銀企直連 API 實現系統自動銷帳，將人工核銷錯誤率降低 90%。</li>
+                  <li><strong>重構供應鏈流程：</strong> 建立標準化物流狀態機整合大型通路，並透過原生 App 與影像壓縮優化，將傳輸速度提升約 50%，異常排查時間縮短約 30%。</li>
+                </ul>
+              </div>
 
-            <div class="project">
-              <h3>服裝連鎖門市 ERP & 高階 POS 系統</h3>
-              <div class="desc">統籌開發全台 20+ 間門市之進銷存系統,深度涵蓋 iPad POS、倉庫管理與 3D 人體數據應用。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>演算法開發:</strong> 設計 7 種以上複雜優惠模型與最優方案自動推薦引擎,成功為門市結帳人員縮短 40% 的運算與等待時間</li>
-                <li><strong>營運效率提升:</strong> 導入 WebSocket 技術建置「試衣間－倉庫」即時通訊,大幅降低門市人員往返取貨的時間成本</li>
-                <li><strong>資安防護 (O2O):</strong> 串接 3D 人體掃描儀,建立高敏感生理數據之隱碼保護與簽核機制,確保跨門市資料調度的高安全性</li>
-              </ul>
-            </div>
+              <div class="project">
+                <div class="project-kicker">Energy IoT</div>
+                <h3>太陽能發電監測與 IoT 預測平台</h3>
+                <ul>
+                  <li><strong>降低維運成本：</strong> 建立自動化巡檢邏輯取代部分人工巡檢，將案場異常處理效率提升 40%。</li>
+                  <li><strong>提升異常判斷品質：</strong> 透過演算法過濾天氣因素交叉比對，將設備異常誤判率降低約 30%。</li>
+                </ul>
+              </div>
 
-            <div class="project">
-              <h3>連鎖飲品&食品門市 ERP + POS 系統</h3>
-              <div class="desc">建置並優化專屬 ERP+POS 系統,透過數位化管理強效支撐業務規模,成功協助客戶門市由 1 間快速擴張至 8 間。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>精準行銷:</strong> 設計並導入超過 4,000 名會員之多維度標籤系統,大幅提升客製化行銷轉換率與客戶關係管理 (CRM) 效能</li>
-                <li><strong>決策優化:</strong> 建立多店庫存與銷售報表自動化系統,搭配多元優惠模型,有效帶動顧客滿意度與營收成長</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>政府計畫「集食雲」採購平台</h3>
-              <div class="desc">主導策劃與開發公司首個中央政府計畫「集食雲」B2B/B2C 採購平台。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>商業模式落地:</strong> 提供供應商起批價等多種定價管理模組,並串接第三方物流實現訂單自動化處理,帶動平台活躍度與整體銷售額雙重成長</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>太陽能發電監測與 IoT 預測平台</h3>
-              <div class="desc">設計開發太陽能 Inverter 監測平台,深度整合環境氣象數據進行交叉比對與發電效能分析。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>降本增效:</strong> 開發自動化巡檢邏輯取代傳統人力,案場異常處理效率提升 40%;並透過演算法過濾天氣因素,將設備異常誤判率降低約 30%</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>醫療與巨量數據分析優化 (全國學生健康網)</h3>
-              <div class="desc">重構與優化運行長達 10 年之全國中小學生健檢巨量數據庫。</div>
-              <div class="highlight">關鍵成效:</div>
-              <ul>
-                <li><strong>效能飛躍:</strong> 透過 T-SQL 深度優化、建立物化視圖 (View) 與演算法重構,成功將海量數據之分析與查詢速度提升高達 10 倍</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>影像辨識與 AI 應用</h3>
-              <div class="desc">結合傳統影像處理與深度學習技術,開發多種智慧辨識系統。</div>
-              <div class="highlight">技術亮點:</div>
-              <ul>
-                <li><strong>傳統影像處理:</strong> 開發黑暗環境車燈辨識系統,透過大津算法、膨脹腐蝕等前處理,實現黑夜中車輛數目精準偵測</li>
-                <li><strong>AI 深度學習:</strong> 應用 CNN 卷積神經網絡辨識心律圖 (2D 圖像),成功訓練出可辨識「左右心膜剝落」異音之 AI 模型</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>傳統產業數位轉型 (ERP/BOM)</h3>
-              <div class="desc">協助食品與製造業建立完整的生產管理與報價系統。</div>
-              <div class="highlight">技術亮點:</div>
-              <ul>
-                <li><strong>食品與製造業:</strong> 為大同醬油、大發食品等廠牌規劃生產管理系統,涵蓋精準 BOM 表領料、半成品庫存追蹤與廢料紀錄</li>
-                <li><strong>生產排程:</strong> 開發排程優化算法,根據機台產能與訂單交期自動生成最優生產計劃,提升產能利用率</li>
-                <li><strong>自動排單叫料提醒:</strong> 可以提供自動排單與叫料提醒功能,確保生產流程順暢</li>
-                <li><strong>報價自動化:</strong> 開發塑料射出業務報價系統,將複雜的「主副材＋工序」邏輯模組化,大幅降低報價人為誤差</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>智慧控制</h3>
-              <div class="desc">結合 IoT 硬體</div>
-              <div class="highlight">技術亮點:</div>
-              <ul>
-                <li><strong>IoT 控制:</strong> 基於 Raspberry Pi 與 PMS5003 模組開發空氣監測系統,實現自動換氣回饋控制</li>
-              </ul>
-            </div>
-
-            <div class="project">
-              <h3>LLM 與 AI 智慧化應用系統整合</h3>
-              <div class="desc">設計與實作結合 LINE 聊天室與大型語言模型 (LLM) 之企業級應用。</div>
-              <div class="highlight">技術亮點:</div>
-              <ul>
-                <li><strong>AI 應用落地:</strong> 開發具備語義分析路由之 AI Line Bot,能精準判讀用戶意圖,動態決定調度 SQL 數據庫或交由 LLM 生成回覆,有效過濾非預期問題並提升自動化客服體驗</li>
-              </ul>
+              <div class="project">
+                <div class="project-kicker">GovTech</div>
+                <h3>政府計畫「集食雲」採購平台</h3>
+                <ul>
+                  <li><strong>完成政府專案商轉：</strong> 主導策劃與開發首個中央政府計畫，建立供應商定價管理模組並串接第三方物流，將專案成果轉化為可持續營運的平台服務。</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="section">
-          <div class="section-title">學歷</div>
-          <div class="list">
-            <div class="item">
-              <h4>虎尾科技大學 (2018 – 2019,電機系／肄業)</h4>
-              <div class="meta">傳統影像處理、嵌入式系統、CNN 影像辨識</div>
-            </div>
-            <div class="item">
-              <h4>南華大學 (2011 – 2015,資訊工程)</h4>
-            </div>
-          </div>
-        </div>
-
-      </main>
+        </main>
+      </section>
     </div>
   </div>
 
@@ -674,37 +550,29 @@
         const header = content.querySelector('.header');
         if (header) sections.push(header);
 
-        // 2. 側邊欄的每個 card
-        const cards = content.querySelectorAll('aside .card');
-        cards.forEach(card => sections.push(card));
+        // 2. 依照頁面順序收集各區塊，支援多頁版面
+        const pages = content.querySelectorAll('.page');
+        pages.forEach(page => {
+          const cards = page.querySelectorAll('aside .card');
+          cards.forEach(card => sections.push(card));
 
-        // 3. 主要內容區的區塊標題 + 內容
-        const main = content.querySelector('main');
-        if (main) {
-          const mainSections = main.querySelectorAll('.section');
+          const mainSections = page.querySelectorAll('main .section');
           mainSections.forEach(section => {
-            // 添加區塊標題
             const title = section.querySelector('.section-title');
             if (title) {
-              const titleWrapper = document.createElement('div');
-              titleWrapper.appendChild(title.cloneNode(true));
               sections.push({ element: section, isTitle: true, title: title.textContent });
             }
 
-            // 添加每個 role 或 project
             const roles = section.querySelectorAll('.role');
             roles.forEach(role => sections.push(role));
 
             const projects = section.querySelectorAll('.project');
             projects.forEach(project => sections.push(project));
 
-            // 學歷項目
-            if (section.textContent.includes('學歷')) {
-              const items = section.querySelectorAll('.item');
-              items.forEach(item => sections.push(item));
-            }
+            const items = section.querySelectorAll('.item');
+            items.forEach(item => sections.push(item));
           });
-        }
+        });
 
         // 逐個渲染每個區塊
         for (let i = 0; i < sections.length; i++) {
